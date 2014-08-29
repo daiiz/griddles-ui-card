@@ -1,0 +1,115 @@
+<!--
+Copyright (c) 2014 daiz. All rights reserved.
+This code may only be used under the BSD style license found at .
+-->
+
+<!--link rel="import" href="../bower_components/polymer/polymer.html"-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="griddles-ui-card" attributes="query cards wrapper layout">
+<template>
+   <link rel="stylesheet" type="text/css" href="griddlesMD/core/md.griddles.css">
+   <style>
+      .stream {
+        background-color: #E5E5E5;
+      }
+   </style>
+   <!--content-->
+   <div class="home-griddles" id="gadget-griddles" on-click={{cardClicked}}></div>
+   <div class='griddles-working' style="visibility: hidden; position: fixed">
+      <img width=30 id="canvas-griddles" src="#">
+      <div id="div-griddles"></div>
+   </div>
+   <!--/content-->
+</template>
+<script src="griddlesMD/core/jquery-1.11.0.min.js"></script>
+<script src="griddlesMD/core/user.data.binding.js"></script>
+<script src="griddlesMD/core/md.griddles.js"></script>
+<script src="griddlesMD/apis.griddles.js"></script>
+<script src="griddlesMD/core/set_scroll_event.js"></script>
+
+<script>
+Polymer("griddles-ui-card", {
+    queryChanged: function(attr, oldValue, newValue) {
+    	console.info("[Polymer::queryChanged] " + this.query);
+      home.griddlesNode = this.$;
+      user_settings.card_width = this.layout.cardWidth;
+      user_settings.margin_left = this.layout.streamMarginLeft;
+      user_settings.margin_right = this.layout.streamMarginRight;
+      user_settings.margin_bottom = this.layout.cardMarginBottom;
+      user_settings.padding_top_of_stream = this.layout.streamPaddingTop;
+      user_settings.one_time_loading_card_number = this.layout.numberReadAtOnce;
+      user_settings.displayFromTopLeftToBottomRight = this.layout.displayFromTopLeftToBottomRight;
+      var cards = (this.cards)[this.query];
+      if(cards != undefined) {
+         var isRunning = home.new_session(cards, true);
+      }else {
+         console.info("The `cards` is empty.");
+      }
+    },
+
+    cardClicked: function(e) {
+       var type = (e.target.parentNode.id).split("_")[0];
+       var cardObject = null;
+       var cardBody = null;
+       if(type == "card" || type == "reserve") {
+         var cardNumber = (e.target.parentNode.id).split("_")[1];
+         var nowQuery = this.query;
+         cardObject = ((this.cards)[this.query])[cardNumber];
+         cardBody = (this.$["gadget-griddles"]).querySelector("#card_" + cardNumber).childNodes[2];
+       }
+       if(window.griddlesAppCardClicked != undefined) {
+         griddlesAppCardClicked([cardObject, cardBody]);
+       }else {
+         console.info("The function `griddlesAppCardClicked` is undefined.");
+       }
+    },
+
+    ready: function() {
+        home.griddlesNode = this.$;
+        console.log(document.querySelector("griddles-ui-card").apis);
+        if(window.griddlesAppInit != undefined) {
+          griddlesAppInit();
+        }else {
+          console.info("The function `griddlesAppInit` is undefined.");
+        }
+    },
+
+    get griddlesNode() {
+        return this.$;
+    },
+
+    get cardLength() {
+    	return this.$["gadget-griddles"].getElementsByClassName("card").length;
+    },
+
+    get streamLength() {
+    	return this.$["gadget-griddles"].getElementsByClassName("stream").length;
+    },
+    
+    /*wrapper: "stage",*/
+
+    layout: {
+    	cardWidth: 200,
+    	cardMarginBottom: 16,
+    	streamMarginLeft: 8,
+    	streamMarginRight: 8,
+    	streamPaddingTop: 10,
+      numberReadAtOnce: 20,
+      displayFromTopLeftToBottomRight: 0.5
+    },
+
+    query: "",
+
+    cards: {
+    	sample: [{"griddles_type": "card", "shadow_depth": 2, "src": "", "contents": "<span>Hello, world!</span>", "className": "text", "height": false, "stream_index": false, "insert_type": "append"}]
+    },
+
+    get apis() {
+      return home.apis;
+    }
+
+});
+</script>
+
+</polymer-element>

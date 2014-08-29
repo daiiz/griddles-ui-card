@@ -1,0 +1,190 @@
+
+<!doctype html>
+<!--
+Fork written by daiz.
+Copyright (c) 2014 daiz.
+This code may only be used under the BSD style license.
+-->
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+  <title>Yummy - demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="yummy_0e.png" type="image/png">
+  <link rel="apple-touch-icon-precomposed" href="yummy_0e.png">
+
+  <script src="../../bower_components/platform/platform.js"></script>
+  <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+ 
+  <!-- For griddles -->
+  <link rel="import" href="../griddles-ui-card.html">
+
+  <!-- For header -->
+  <link rel="import" href="../../bower_components/daiz-core-scroll-header-panel/core-scroll-header-panel.html">
+  <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+
+  <!-- For menu -->
+  <link href="../../bower_components/paper-item/paper-item.html" rel="import">
+  <link href="../../bower_components/paper-menu-button/paper-menu-button.html" rel="import">
+
+  <!-- For dialog -->
+  <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../../bower_components/paper-dialog/paper-dialog-transition.html">
+  <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+
+  <!-- For input -->
+  <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+  <!-- For App -->
+  <script src="samples.js"></script>
+  
+  <style shim-shadowdom>
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    core-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    
+    /* background for toolbar when it is at its full size */
+    core-scroll-header-panel::shadow #headerBg {
+      background-image: url("src/1frgq.jpg");
+    }
+    
+    /* background for toolbar when it is condensed */
+    core-scroll-header-panel::shadow #condensedHeaderBg {
+      background-color: #312319;/*#f4b400;*/
+    }
+    
+    core-toolbar {
+      color: #f1f1f1;
+      fill: #f1f1f1;
+      background-color: transparent;
+    }
+    
+    core-scroll-header-panel::shadow #mainContainer {
+      overflow-y: scroll!important;
+    }
+
+    .title {
+      -webkit-transform-origin: 0;
+      transform-origin: 0;
+      font-size: 40px;
+    }
+    
+    .content {
+      padding: 10px 30px;
+    }
+
+    .content {
+      padding: 0px 0px;
+    }
+
+    .inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    .menu_item {
+      color: #333;
+      font-size: 12pt;
+      font-family: arial, Meiryo;
+    }
+
+    paper-dialog paper-button {
+      font-weight: bold;
+    }
+
+    paper-button[autofocus] {
+      color: #4285f4;
+    }
+
+    paper-dialog {
+      width: 50%;
+      min-width: 430px;
+    }
+
+  </style>
+
+</head>
+<body unresolved style="background-color: #e5e5e5">
+
+  <core-scroll-header-panel condenses id='panel' onScroll="home.scrolled">
+
+    <core-toolbar class="tall">
+      <img src='yummy_0e.png' style='width: 42px'>
+      <div flex></div>
+      <div class="inner paper-shadow-bottom-z-1"></div>
+      <paper-menu-button icon="search" halign="right" id="menus">
+         <paper-item label="すべてのごちそう" class="menu_item" id="btn_all_gochiso" data-label="ごちそう"></paper-item>
+    　　</paper-menu-button>
+      <div class="inner paper-shadow-bottom-z-1"></div>
+
+      <paper-menu-button icon="more-vert" halign="right">
+        <paper-item label="データをインポート" class="menu_item" id="btn_import"></paper-item>
+        <paper-item label="データをエクスポート" class="menu_item"></paper-item>
+        <paper-item label="登録したデータを削除" class="menu_item" id="btn_remove"></paper-item>
+      </paper-menu-button>
+      <div class="bottom indent title">Yummy</div>
+      
+    </core-toolbar>
+
+    <div class="content">
+       <griddles-ui-card wrapper="core-scroll-header-panel"></griddles-ui-card>
+    </div>
+  </core-scroll-header-panel>
+  
+  <script>
+  
+    // custom transformation: scale header's title
+    var titleStyle = document.querySelector('.title').style;
+    addEventListener('core-header-transform', function(e) {
+      var d = e.detail;
+      var m = d.height - d.condensedHeight;
+      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+      titleStyle.transform = titleStyle.webkitTransform = 
+          'scale(' + scale + ') translateZ(0)';
+    });
+  
+  </script>
+
+<paper-dialog heading="データをインポート" transition="paper-dialog-transition-center" id="dialog_import">
+    <br>
+    <!--paper-input /*multiline*/ floatingLabel label="ここに「ごちそうコード」を貼り付けてください。" id="dialog_input_import"></paper-input-->
+    <input placeholder="ここに「ごちそうコード」を貼り付けてください。" id="dialog_input_import" style="width:350px;border: 1px solid #CCC;">
+    <paper-button label="キャンセル" affirmative></paper-button>
+    <paper-button label="インポート" affirmative autofocus id="dialog_btn_import"></paper-button>
+</paper-dialog>
+
+<!-- Application -->
+<script src="myApp.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "griddles-ui-card",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+  ],
+  "author": "",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "core-elements": "Polymer/core-elements#master",
+    "paper-elements": "Polymer/paper-elements",
+    "polymer-ui-elements": "PolymerLabs/polymer-ui-elements"
+  }
+}
