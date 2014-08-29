@@ -12,49 +12,6 @@ var clog = function(x) {
 	//console.log(x);
 }
 
-home.card_auto_complete = function(card) {
-  var a = card.griddles_type;
-  var b = card.shadow_depth;
-  var c = card.src;
-  var d = card.contents;
-  var e = card.className;
-  var f = card.height;
-  var g = card.stream_index;
-  var h = card.insert_type;
-  
-  if(a == undefined) {
-    if(d != undefined && d != "") {
-      card.griddles_type = CARD;
-    }else {
-      card.griddles_type = GRID_PHOTO;
-    }
-  }
-  if(b == undefined) {
-    card.shadow_depth = 0;
-  }
-  if(c == undefined && card.griddles_type == GRID_PHOTO) {
-    card.griddles_type = CARD;
-    card.contents = "";
-  }
-  if(d == undefined) {
-    card.contents = "";
-  }
-  if(e == undefined) {
-    card.className = "";
-  }
-  if(f == undefined) {
-    card.height = false;
-  }
-  if(g == undefined) {
-    card.stream_index = false;
-  }
-  if(h == undefined) {
-    card.insert_type = APPEND;
-  }
-  
-  return card;
-}
-
 home.get_screen_info = function() {
   var w = AppData.int_last_window_width;
   var h = document.body.clientHeight;
