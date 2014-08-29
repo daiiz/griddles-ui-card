@@ -4,7 +4,7 @@ function griddlesAppInit() {
   var myApp_g = document.querySelector("griddles-ui-card");
   console.log(myApp_g.cards);
 	for(var i = 0; i < 100; i++) {
-		var card = {"griddles_type": "card", "shadow_depth": 1, "src": "", "contents": "<span>Hello, world!</span>", "className": "text", "height": Math.floor(Math.random()*200) + 50, "stream_index": false, "insert_type": "append"};
+		var card = {"griddles_type": "card", "border_radius": 2, "shadow_depth": 1, "src": "", "contents": "<span>Hello, world!</span>", "className": "text", "height": Math.floor(Math.random()*200) + 50, "stream_index": false, "insert_type": "append"};
 	  myApp_g.cards["sample"].push(card);
 	}
 

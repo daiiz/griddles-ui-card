@@ -114,15 +114,15 @@ home.render_stream = function(stage_id) {
    }
    //sumW = sumW - marginL - marginR;
    var diff = AppData.int_last_window_width - sumW;//AppData.int_gadget_width - sumW;
-   var int_djustment_paddingL = 0;
+   var int_adjustment_paddingL = 0;
    if(diff >= 0) {
-      int_djustment_paddingL = Math.floor(diff / 2);
+      int_adjustment_paddingL = Math.floor(diff / 2);
    }else {
    	  console.error("diff < 0 .");
    }
 
    // ストリームをレンダリングする
-   home.griddlesNode["gadget-griddles"].style.paddingLeft = home.int_to_px(int_djustment_paddingL); /* CH2 */
+   home.griddlesNode["gadget-griddles"].style.paddingLeft = home.int_to_px(int_adjustment_paddingL); /* CH2 */
    var template_stream = '<div id="stream_{I}" class="stream" style="width: {W}px; margin-left: {L}px; margin-right: {R}px;">{T}</div>';
    var json_stream = {"I": 0, "L": marginL, "R": marginR, "T": "", "W": cardW};
    var html = "";
@@ -132,6 +132,7 @@ home.render_stream = function(stage_id) {
       // console.log(html); /* ^o^ */
       $(home.griddlesNode["gadget-griddles"]).append(html); /* CH2 */
    }
+
 
    // ストリームの高さを保持する配列を用意する
    // この配列は reserve_card_place 毎に更新される
@@ -314,8 +315,8 @@ home.reserve_card_place = function(times) {
 }
 
 home.get_sahdow_code = function(int_z_depth) {
-   if(int_z_depth >= 5) {
-      int_z_depth = 5;
+   if(int_z_depth >= 6) {
+      int_z_depth = 6;
    }
    /* 
     * CSS style data for shadows:
@@ -329,19 +330,21 @@ home.get_sahdow_code = function(int_z_depth) {
     */
    var z_bottoms = {
                     z0: "", 
-                    z1: "box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);",
-                    z2: "box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);",
-                    z3: "box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);",
-                    z4: "box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22);",
-                    z5: "box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2);"
+                    z1: "",
+                    z2: "box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);",
+                    z3: "box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);",
+                    z4: "box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);",
+                    z5: "box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22);",
+                    z6: "box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2);",
                    };
    var z_tops = {
                     z0: "",
-                    z1: "box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);",
-                    z2: "box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
-                    z3: "box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19);",
-                    z4: "box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);",
-                    z5: "box-shadow: 0 40px 77px 0 rgba(0, 0, 0, 0.22);"
+                    z1: "box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;",
+                    z2: "box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);",
+                    z3: "box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
+                    z4: "box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19);",
+                    z5: "box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);",
+                    z6: "box-shadow: 0 40px 77px 0 rgba(0, 0, 0, 0.22);",
                 }
    var template_shadow = "<div class='shadow shadow_bottom' style='{B}'></div><div class='shadow shadow_top' style='{T}'></div>";
    var html_shadow = home.make(template_shadow, {"B": z_bottoms["z" + int_z_depth], "T": z_tops["z" + int_z_depth]});
@@ -354,9 +357,13 @@ home.display_card = function(times) {
    // var shadow_bottom = '<div class="shadow-bottom"></div>';
    // var shadow_top = '<div class="shadow-top"></div>';
    var shadow = home.get_sahdow_code(CardData[times].shadow_depth);
-   var template_card = '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px;" data-clickable="card">{T}</div>';
+   var template_card = '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px; border-radius: {R}px;" data-clickable="card">{T}</div>';
    var contents = CardData[times].contents; // chrome appsでの外部画像の場合の処理は別途用意
-   var json_card = {"I": times, "H": CardData[times].height, "C": CardData[times].className, "W": user_settings.card_width, "T": shadow + contents};
+   var radius = 0;
+   if(CardData[times].border_radius != undefined) {
+      radius = CardData[times].border_radius;
+   }
+   var json_card = {"I": times, "H": CardData[times].height, "C": CardData[times].className, "W": user_settings.card_width, "R": radius,"T": shadow + contents};
    var html = home.make(template_card, json_card);
    clog(html);
    html = $(html);
