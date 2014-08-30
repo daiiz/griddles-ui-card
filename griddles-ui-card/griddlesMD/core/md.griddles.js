@@ -435,15 +435,6 @@ home.onclick = function(e) {
 
 }
 
-/*
-home.new_session = function(abort_flag, func_init_or_continue) {
-    // abort_flag == true: 中断
-    if(func_init_or_continue != null && func_init_or_continue != undefined) {
-        AppData.func_new_session_callback = func_init_or_continue;
-    }
-}
-*/
-
 home.window_resized_timer = false;
 home.window_resized = function(e) {
   if (home.window_resized_timer !== false) {
@@ -462,10 +453,8 @@ home.window_resized = function(e) {
 }
 
 /* Event Listeners */
-// window.addEventListener("load", home.init, false);
-
 $(window).resize("resize", home.window_resized);
-//window.addEventListener("resize", home.window_resized, false);
+
 (function() {
    var class_griddles = document.getElementsByClassName("home-griddles");
    for(var i = 0; i < class_griddles.length; i++) {
@@ -488,18 +477,6 @@ home.interval_scroll_zero = function() {
       home.continue();
    }
 }
-
-/*
-home.scrolled = function(e) {
-  console.log(e);
-}
-*/
-//mainContainer
-/*
-$(window).on("scroll", function() {
-    var sh = $(document).height();
-    var sp = $(window).height() + $(window).scrollTop();
-*/
 
 home.new_session = function(array_cards, init_flag) {
   if(init_flag == undefined || init_flag == true) {
