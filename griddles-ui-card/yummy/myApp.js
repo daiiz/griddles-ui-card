@@ -55,7 +55,7 @@ function miils(query) {
         var str_tags = "," + tags.toString() + ",";
         var res = str_tags.search(rg);
         var src = smpls[i].web;
-    	var j = {"griddles_type": GRID_PHOTO, 
+    	var j = {"griddles_type": "photo_grid", 
                "shadow_depth": 0,
                "src": src, 
                "contents": "", 
