@@ -89,7 +89,6 @@ This code may only be used under the BSD style license found at .
         bool_scroll_event_is_setted: false,
         int_scrollbar_width: 17
     };
-    // {"contents", "class", "height", "griddles_type"}
     var CardData = [
         //{"contents": "<div style='padding: 5px;'>hello</div>", "className": "text", "height": 30},
         //{"contents": "<div>hello, world!</div>", "className": "text", "height": 50}
@@ -158,31 +157,15 @@ This code may only be used under the BSD style license found at .
         if (diff >= 0 || flag == true) {
             home.griddlesNode["gadget-griddles"].style.transform = "scaleX(1)";
             home.griddlesNode["gadget-griddles"].style.marginLeft = home.int_to_px(0);
-            home.griddlesNode["gadget-streams"].style.left = "-50%";
-            /*
-            int_adjustment_paddingL = Math.floor(diff / 2);
-            console.debug("int_adjustment_paddingL: %dpx", int_adjustment_paddingL);
-            home.griddlesNode["gadget-griddles"].style.marginLeft = home.int_to_px(0);
-            home.griddlesNode["gadget-griddles"].style.width = home.int_to_px(now_w);
-            home.griddlesNode["gadget-griddles"].style.paddingLeft = home.int_to_px(int_adjustment_paddingL);
-            AppData.initial_int_adjustment_paddingL = int_adjustment_paddingL;
-            */
+            //home.griddlesNode["gadget-streams"].style.left = "-50%";
         } else {
             // 表示領域が狭くなった
             var L = AppData.sumW;
-            //var new_s = (Math.floor((now_w / L) * 10)) / 10;
             var new_s = now_w / L;
-            var ml = -(now_w - (L*new_s)/2);
+            home.griddlesNode["gadget-griddles"].style.transformOrigin = "left";
             home.griddlesNode["gadget-griddles"].style.transform = "scaleX(" + new_s + ")";
-            console.log((L - L*new_s)/2);
-            //   var ds = 1 - new_s;
-            //   var s = apl + (L / 2);
-            //var mr = now_w - (ds * s) + (L * new_s);
-            //var pl = (mr - (ds * s) - apl) / 2;
-            //home.griddlesNode["gadget-griddles"].style.paddingLeft = home.int_to_px(apl * new_s); //apl * new_s
-            //home.griddlesNode["gadget-streams"].style.left = -((new_s) * 100) + "%";
-            home.griddlesNode["gadget-griddles"].style.marginLeft = home.int_to_px(-(L - L*new_s)/2);
-            //document.querySelector('core-scroll-header-panel').scroller.style.overflowX = "scroll";
+            // transformOriginがcenterの場合の設定：
+            // home.griddlesNode["gadget-griddles"].style.marginLeft = home.int_to_px(-(L - L*new_s)/2);
             console.debug("diff < 0 .");
         }
         return int_adjustment_paddingL;
@@ -202,15 +185,6 @@ This code may only be used under the BSD style license found at .
         home.griddlesNode["gadget-griddles"].style.width = home.int_to_px(sumW);
         var int_adjustment_paddingL = home.set_adjustment_paddingL(AppData.int_last_window_width, true);
         //AppData.initial_int_adjustment_paddingL = int_adjustment_paddingL;
-        /*
-        var diff = AppData.int_last_window_width - sumW;
-        var int_adjustment_paddingL = 0;
-        if (diff >= 0) {
-            int_adjustment_paddingL = Math.floor(diff / 2);
-        } else {
-            console.error("diff < 0 .");
-        }
-        */
         // ストリームをレンダリングする
         var template_stream =
             '<div id="stream_{I}" class="stream" style="width: {W}px; margin-left: {L}px; margin-right: {R}px;">{T}</div>';
