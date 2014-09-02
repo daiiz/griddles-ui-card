@@ -22,8 +22,24 @@
 <body unresolved>
   
 	<h1>griddles-ui-card demo page</h1>
-	<button id="sample" class="button_demo">card</button>
-  <button id="photo" class="button_demo">photo</button>
+
+	<div id="demo_panel">
+     <div id="values">
+        cardWidth: <input type="number" value="200" class="num" id="cardWidth">, 
+        cardMarginBottom: <input type="number" value="16" class="num" id="cardMarginBottom">,
+        streamMarginLeft: <input type="number" value="8" class="num" id="streamMarginLeft">,
+        streamMarginRight: <input type="number" value="8" class="num" id="streamMarginRight">,
+        streamPaddingTop: <input type="number" value="10" class="num" id="streamPaddingTop">,
+        numberReadAtOnce: <input type="number" value="20" class="num" id="numberReadAtOnce">,
+        displayFromTopLeftToBottomRight: <input type="number" value="0.5" class="num" id="displayFromTopLeftToBottomRight">,
+        <i>card</i>.shadow_depth: <input type="number" value="1" class="num" id="shadow_depth"　min=0, max=6>,
+        <br><br>
+     </div>
+     
+     <button id="sample" class="button_demo">card</button>
+     <button id="photo" class="button_demo">photo</button>
+     <button id="reset" class="button_demo">RESET</button>
+  </div>
 	<div id="stage">
 	  <griddles-ui-card wrapper="stage"></griddles-ui-card>
 	</div>
