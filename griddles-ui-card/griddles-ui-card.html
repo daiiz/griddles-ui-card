@@ -8,12 +8,7 @@ This code may only be used under the BSD style license found at .
 
 <polymer-element name="griddles-ui-card" attributes="query cards wrapper layout">
 <template>
-   <link rel="stylesheet" type="text/css" href="griddlesMD/core/md.griddles.css">
-   <style>
-      .stream {
-        background-color: transparent;
-      }
-   </style>
+   <link rel="stylesheet" type="text/css" href="griddlesMD/md.griddles.css">
    <!--content-->
    <div class="home-griddles" id="gadget-griddles" on-click={{cardClicked}} style="position:relative; left:50%; float:left;">
       <div id="gadget-streams" style="position:relative; left:-50%; float:left;">
@@ -26,7 +21,7 @@ This code may only be used under the BSD style license found at .
    <!--/content-->
 </template>
 
-<script src="griddlesMD/core/jquery-1.11.0.min.js"></script>
+<script src="griddlesMD/lib/jquery-1.11.0.min.js"></script>
 <!--
 <script src="griddlesMD/core/user.data.binding.js"></script>
 <script src="griddlesMD/core/md.griddles.js"></script>
@@ -39,7 +34,6 @@ This code may only be used under the BSD style license found at .
     /*
      * core/user.data.binding.js:
      */
-    /* TEST FILE. */
     var CHROME_APP = 3;
     var PC_WEB = 1;
     var MOBILE_WEB = 2;
@@ -55,9 +49,7 @@ This code may only be used under the BSD style license found at .
     var PC = "NOT mobile";
     var user_settings = {
         max_number_of_streams: false,
-        /*stop_number: function(x) {return (15 + x)},  OR false */
         card_width: 194,
-        /*横・縦モードに依って異なる*/ /*300*/ /*280*/
         screen_persent: 100,
         margin_left: 2,
         /* 17 17 34 */ /*14 14 28*/ /* 4 4 8 */
@@ -65,8 +57,7 @@ This code may only be used under the BSD style license found at .
         margin_bottom: 4,
         restart: false,
         displayFromTopLeftToBottomRight: false,
-        one_time_loading_card_number: 20,
-        /* OR false */
+        one_time_loading_card_number: 20, // OR false
         padding_top_of_stream: 10,
         screen_layout: {
             landscape: {},
@@ -79,7 +70,6 @@ This code may only be used under the BSD style license found at .
         int_last_window_width: UNKNOWN,
         int_init_delay: 10,
         bool_abort_flag: false,
-        //func_new_session_callback: function(){},
         bool_new_session_callback_called: false,
         render_status: ["stop", -1],
         int_card_times: -1,
@@ -279,8 +269,17 @@ This code may only be used under the BSD style license found at .
             var card_data = CardData[times];
             var card_type = card_data.griddles_type;
             var user_screen = AppData.int_user_screen;
-            var template_img =
-                '<img src="{U}" style="width:100%; height:100%">';
+            var template_img = '<img src="{U}" style="width:100%; height:100%">';
+            // card_data.height のユーザー設定初期値が false でない場合に not_initial_height_false が true となる
+            var not_initial_height_false = false;
+            if(card_data.init_height == undefined) {
+                not_initial_height_false = true;
+                card_data.init_height = card_data.height;
+            }
+            if(card_data.init_height != false) {
+                not_initial_height_false = true;
+            }
+            //
             if (card_type == "photo_grid") {
                 var web_url = card_data.src;
                 var canvas = home.griddlesNode["canvas-griddles"]; //document.getElementById("canvas-griddles");
@@ -291,12 +290,14 @@ This code may only be used under the BSD style license found at .
                         var H = photo.height;
                         var w = user_settings.card_width;
                         var h;
-                        if (card_data.height != false && card_data.height >
-                            0) {
+
+                        if (card_data.height != false && card_data.height > 0 && not_initial_height_false) {
                             h = card_data.height;
                         } else {
+                            card_data.init_height = false;
                             h = Math.floor((w / W) * H);
                         }
+                        //console.debug(w, W, H, "|", h, Math.floor((w / W) * H));
                         canvas.style.width = home.int_to_px(w);
                         canvas.style.height = home.int_to_px(h);
                         canvas.src = web_url;
@@ -333,8 +334,7 @@ This code may only be used under the BSD style license found at .
                 html.ready(function() {
                     // CardData[times].contents
                     var h;
-                    if (card_data.height != false && card_data.height >
-                        0) {
+                    if (card_data.height != false && card_data.height > 0 && not_initial_height_false) {
                         h = card_data.height;
                     } else {
                         h = home.griddlesNode["div-griddles"].offsetHeight; //doc.getElementById("div-griddles").offsetHeight;
@@ -758,9 +758,16 @@ This code may only be used under the BSD style license found at .
             return griddles.card_auto_complete(card_json);
         }
     };
+
     /*
      * Polymer code:
      */
+
+    /*
+     * Copyright (c) 2014 daiz. All rights reserved.
+     * This code may only be used under the BSD style license.
+     */
+
     Polymer("griddles-ui-card", {
         queryChanged: function(attr, oldValue, newValue) {
             console.info("[Polymer::queryChanged] " + this.query);
@@ -770,10 +777,8 @@ This code may only be used under the BSD style license found at .
             user_settings.margin_right = this.layout.streamMarginRight;
             user_settings.margin_bottom = this.layout.cardMarginBottom;
             user_settings.padding_top_of_stream = this.layout.streamPaddingTop;
-            user_settings.one_time_loading_card_number = this.layout
-                .numberReadAtOnce;
-            user_settings.displayFromTopLeftToBottomRight =
-                this.layout.displayFromTopLeftToBottomRight;
+            user_settings.one_time_loading_card_number = this.layout.numberReadAtOnce;
+            user_settings.displayFromTopLeftToBottomRight = this.layout.displayFromTopLeftToBottomRight;
             var cards = (this.cards)[this.query];
             if (cards != undefined) {
                 var isRunning = home.new_session(cards, true);
@@ -845,7 +850,8 @@ This code may only be used under the BSD style license found at .
                 "className": "text",
                 "height": false,
                 "stream_index": false,
-                "insert_type": "append"
+                "insert_type": "append",
+                "dataset": {}
             }]
         },
         get apis() {
