@@ -272,12 +272,9 @@ This code may only be used under the BSD style license found at .
             var template_img = '<img src="{U}" style="width:100%; height:100%">';
             // card_data.height のユーザー設定初期値が false でない場合に not_initial_height_false が true となる
             var not_initial_height_false = false;
-            if(card_data.init_height == undefined) {
+            if(card_data.init_height == undefined || card_data.init_height != false) {
                 not_initial_height_false = true;
                 card_data.init_height = card_data.height;
-            }
-            if(card_data.init_height != false) {
-                not_initial_height_false = true;
             }
             //
             if (card_type == "photo_grid") {
@@ -337,6 +334,7 @@ This code may only be used under the BSD style license found at .
                     if (card_data.height != false && card_data.height > 0 && not_initial_height_false) {
                         h = card_data.height;
                     } else {
+                        card_data.init_height = false;
                         h = home.griddlesNode["div-griddles"].offsetHeight; //doc.getElementById("div-griddles").offsetHeight;
                     }
                     CardData[times].src = null;
