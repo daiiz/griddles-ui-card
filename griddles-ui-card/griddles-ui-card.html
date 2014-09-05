@@ -6,7 +6,7 @@ This code may only be used under the BSD style license found at .
 <!--link rel="import" href="../bower_components/polymer/polymer.html"-->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="griddles-ui-card" attributes="query cards wrapper layout">
+<polymer-element name="griddles-ui-card" attributes="query cards wrappedBy layout">
 <template>
    <link rel="stylesheet" type="text/css" href="griddlesMD/md.griddles.css">
    <!--content-->
@@ -463,9 +463,7 @@ This code may only be used under the BSD style license found at .
             var card = home.griddlesNode["gadget-griddles"].querySelector(
                 "#reserve_" + times); //$("#reserve_" + times)[0];
             //console.log("%" + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream));
-            var offset = card.offsetLeft + (card.offsetTop -
-                AppData.int_last_min_stream - user_settings
-                .padding_top_of_stream);
+            var offset = card.offsetLeft + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream);
             var delay = offset / 1000;
             var rate = user_settings.displayFromTopLeftToBottomRight;
             if (rate == undefined || rate == false) {
@@ -473,9 +471,7 @@ This code may only be used under the BSD style license found at .
             }
             //console.log(rate);
             //delay = 0;
-            home.griddlesNode["gadget-griddles"].querySelector(
-                    "#card_" + times).style.transitionDelay =
-                delay * rate + "s"; /*console.log(delay * 0.01);0.224*/
+            home.griddlesNode["gadget-griddles"].querySelector("#card_" + times).style.transitionDelay = delay * rate + "s"; /*console.log(delay * 0.01);0.224*/
             $(home.griddlesNode["gadget-griddles"].querySelector(
                 "#card_" + times)).removeClass(
                 'card-non-visible');
@@ -649,7 +645,7 @@ This code may only be used under the BSD style license found at .
             /* g_wrapperは、以下のどれか１つ または id が与えられる。 
              * "document", "core-scroll-header-panel"
              */
-            var g_wrapper = document.querySelector("griddles-ui-card").wrapper;
+            var g_wrapper = document.querySelector("griddles-ui-card").wrappedBy;
             if (g_wrapper == undefined || g_wrapper == "") {
                 document.querySelector("griddles-ui-card").wrapper =
                     scroll_wrappers[0];
