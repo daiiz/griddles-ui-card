@@ -5,7 +5,7 @@ This is a web component wrapper for [griddlesJS](https://github.com/daiz713/grid
 ##### Example:
 HTML: 
 ```
-<griddles-ui-card wrapper="document"></griddles-ui-card>
+<griddles-ui-card wrappedBy="document"></griddles-ui-card>
 ```
 JavaScript:
 ```
@@ -19,7 +19,7 @@ function griddlesAppCardClicked(card) {
 ```
 
 ## Properties
-#### wrapper
+#### wrappedBy
    + string
    + default: `document`
    + This properity requires `document`, `core-scroll-header-panel` or `the id of a parent element` as the value. You can specify any one of them.  These values ​​have the following meanings:
