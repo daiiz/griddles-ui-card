@@ -1,7 +1,7 @@
 griddles-ui-card
 ================
 ## Summary
-This is a web component, using Polymer library. The griddles-ui-card component provides a simple card UI. You can dynamically set and change the contents in the &lt;griddles-ui-card&gt; element.
+This is a web component wrapper for [griddlesJS](https://github.com/daiz713/griddles) using Polymer. The griddles-ui-card component provides a simple card UI. You can dynamically set and change the contents in the &lt;griddles-ui-card&gt; element.
 ##### Example:
 HTML: 
 ```
