@@ -73,6 +73,7 @@ function griddlesAppCardClicked(card) {
          "height": false,
          "stream_index": false,
          "insert_type": "append",
+         "border_radius": 2,
          "dataset": {}
         }
       ]
@@ -100,6 +101,8 @@ function griddlesAppCardClicked(card) {
         + `insert_type`: Specify either “append” or “prepend”. *Note: "append" is recommended.*
         
         + `shadow_depth`: This value represents a depth of shadow of the card. The state of being shadowless is set to "0", you can specify an integer value as a level of shadow up to the maximum value of "6".
+        
+        + `border_radius`: Specify the roundness of the corners of the card, in pixels.
         
 
 #### query
