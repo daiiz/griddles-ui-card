@@ -4,34 +4,34 @@ var TAGMANAGE = "タグを管理";
 var griddles_apis = {};
 
 function creatingKeyList(data, id) {
-	document.getElementById(id).innerHTML = '<paper-item label="すべてのごちそう" class="menu_item" id="btn_all_gochiso" data-label="ごちそう"></paper-item>';
-	var tags = [];
-	var str_tags = "," + tags.toString() + ",";
+  document.getElementById(id).innerHTML = '<paper-item label="すべてのごちそう" class="menu_item" id="btn_all_gochiso" data-label="ごちそう"></paper-item>';
+  var tags = [];
+  var str_tags = "," + tags.toString() + ",";
     if(data != undefined) {
         for(var j = 0; j < data.length; j++) {
-        	if(j > 0) {
+          if(j > 0) {
                 var yss = data[j].tags.ys;
                 for(var i = 0; i < yss.length; i++) {
                     var rg = new RegExp("," + yss[i] + ",", "gi");
                     var res = str_tags.search(rg);
                     if(res == -1 && yss[i] != MAINKEY) {
-                    	tags.push(yss[i]);
-                    	str_tags = str_tags + yss[i] + ",";
+                      tags.push(yss[i]);
+                      str_tags = str_tags + yss[i] + ",";
                     }
                 }
-        	}
+          }
         }
         var template = '<paper-item label="{L}" class="menu_item" data-label="{DL}"></paper-item>';
         var html = "";
         var max = tags.length;
         if(tags.length > 10) {
-        	max = 10;
+          max = 10;
         }
         for(var j = 0; j < max; j++) {
             var html = html + griddles_apis.make(template, {L: tags[j], DL: tags[j]});
         }
         if(tags.length > 10) {
-        	html = html + "<hr>" + griddles_apis.make(template, {L: TAGMANAGE, DL: TAGMANAGE});
+          html = html + "<hr>" + griddles_apis.make(template, {L: TAGMANAGE, DL: TAGMANAGE});
         }
         $($("#"+id)).append(html);
 
@@ -42,20 +42,20 @@ function creatingKeyList(data, id) {
 function miils(query) {
   var cards = [];
   var rg = new RegExp("," + query + ",", "gi");
-	smpls = JSON.parse(localStorage[YUMMY2]);
-	//var queries = creatingKeyList(smpls, "#menus");
+  smpls = JSON.parse(localStorage[YUMMY2]);
+  //var queries = creatingKeyList(smpls, "#menus");
     for(var i = 0; i < smpls.length; i++) {
      if(i > 0) {
-    	h = false;
-    	var obj = smpls[i];
-    	//var local_name = obj.page.split("/");
-        //local_name = local_name[local_name.length - 1];
-        //var src = "photos/"+ local_name +".jpg";
-        var tags = smpls[i].tags.ys;
-        var str_tags = "," + tags.toString() + ",";
-        var res = str_tags.search(rg);
-        var src = smpls[i].web;
-    	var j = {"griddles_type": "photo_grid", 
+      h = false;
+      var obj = smpls[i];
+      //var local_name = obj.page.split("/");
+      //local_name = local_name[local_name.length - 1];
+      //var src = "photos/"+ local_name +".jpg";
+      var tags = smpls[i].tags.ys;
+      var str_tags = "," + tags.toString() + ",";
+      var res = str_tags.search(rg);
+      var src = smpls[i].web;
+      var j = {"griddles_type": "photo_grid", 
                "shadow_depth": 0,
                "src": src, 
                "contents": "", 
@@ -64,8 +64,8 @@ function miils(query) {
                "dataset": {"webpage": smpls[i].page}
               }
         if(res != -1 || query == MAINKEY) {
-    	   cards.push(j);
-    	  }
+         cards.push(j);
+        }
       }
     }
     /**/
@@ -123,16 +123,16 @@ function griddlesAppInit() {
     numberReadAtOnce: 20,
     displayFromTopLeftToBottomRight: 0.01
   };
-	var smpls = sample_data;
-	if(localStorage[YUMMY2] != undefined && localStorage[YUMMY2] != "") {
+  var smpls = sample_data;
+  if(localStorage[YUMMY2] != undefined && localStorage[YUMMY2] != "") {
        var code = JSON.parse(localStorage[YUMMY2]);
        if(code != undefined) {
           smpls = code;
        }
-	}else if(localStorage[YUMMY2] == undefined) {
+  }else if(localStorage[YUMMY2] == undefined) {
        localStorage[YUMMY2] = JSON.stringify(smpls);
-	}
-	var queries = creatingKeyList(smpls, "menus");
+  }
+  var queries = creatingKeyList(smpls, "menus");
 }
 
 /*　
