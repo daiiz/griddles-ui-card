@@ -51,7 +51,9 @@ This code may only be used under the BSD style.
         card_width: 194,
         screen_persent: 100,
         margin_left: 2,
-        /* 17 17 34 */ /*14 14 28*/ /* 4 4 8 */
+        /* 17 17 34 */
+        /*14 14 28*/
+        /* 4 4 8 */
         margin_right: 2,
         margin_bottom: 4,
         restart: false,
@@ -175,8 +177,7 @@ This code may only be used under the BSD style.
         var int_adjustment_paddingL = home.set_adjustment_paddingL(AppData.int_last_window_width, true);
         //AppData.initial_int_adjustment_paddingL = int_adjustment_paddingL;
         // ストリームをレンダリングする
-        var template_stream =
-            '<div id="stream_{I}" class="stream" style="width: {W}px; margin-left: {L}px; margin-right: {R}px;">{T}</div>';
+        var template_stream = '<div id="stream_{I}" class="stream" style="width: {W}px; margin-left: {L}px; margin-right: {R}px;">{T}</div>';
         var json_stream = {
             "I": 0,
             "L": marginL,
@@ -227,10 +228,8 @@ This code may only be used under the BSD style.
         //console.log(times);
         LAST_STOP_NUMBER = times;
         AppData.render_status = ["stop", times];
-        var min_stream_index = +((home.get_min_height_stream_id()).split(
-            "_")[1]);
-        var min_stream_height = AppData.int_offsetHeights[
-            min_stream_index];
+        var min_stream_index = +((home.get_min_height_stream_id()).split("_")[1]);
+        var min_stream_height = AppData.int_offsetHeights[min_stream_index];
         var gadget_h = home.griddlesNode["gadget-griddles"].style.height; /* CH1 */
         // gadgetの領域の高さを取得
         if (gadget_h == "") {
@@ -245,10 +244,8 @@ This code may only be used under the BSD style.
             home.continue();
         } else {
             //doc.getElementsByTagName("html")[0].style.overflowY = "scroll";
-            var min_stream_index = +((home.get_min_height_stream_id()).split(
-                "_")[1]);
-            AppData.int_last_min_stream = AppData.int_offsetHeights[
-                min_stream_index];
+            var min_stream_index = +((home.get_min_height_stream_id()).split("_")[1]);
+            AppData.int_last_min_stream = AppData.int_offsetHeights[min_stream_index];
             //$($("#stream_"+min_stream_index)[0]).append("<div class='title' style='color: #222; background: #fff; padding: 10px' id='more'><center>more</center></div>");
             AppData.auto_abort = false;
             if (AppData.bool_scroll_event_is_setted == false) {
@@ -271,7 +268,7 @@ This code may only be used under the BSD style.
             var template_img = '<img src="{U}" style="width:100%; height:100%">';
             // card_data.height のユーザー設定初期値が false でない場合に not_initial_height_false が true となる
             var not_initial_height_false = false;
-            if(card_data.init_height == undefined || card_data.init_height != false) {
+            if (card_data.init_height == undefined || card_data.init_height != false) {
                 not_initial_height_false = true;
                 card_data.init_height = card_data.height;
             }
@@ -286,7 +283,6 @@ This code may only be used under the BSD style.
                         var H = photo.height;
                         var w = user_settings.card_width;
                         var h;
-
                         if (card_data.height != false && card_data.height > 0 && not_initial_height_false) {
                             h = card_data.height;
                         } else {
@@ -297,10 +293,9 @@ This code may only be used under the BSD style.
                         canvas.style.width = home.int_to_px(w);
                         canvas.style.height = home.int_to_px(h);
                         canvas.src = web_url;
-                        CardData[times].contents = home.make(
-                            template_img, {
-                                "U": web_url
-                            });
+                        CardData[times].contents = home.make(template_img, {
+                            "U": web_url
+                        });
                         CardData[times].src = web_url;
                         CardData[times].height = h;
                         CardData[times].design_configured = true;
@@ -310,10 +305,9 @@ This code may only be used under the BSD style.
                         //console.log(e);
                         web_url = "#";
                         var h = 0;
-                        CardData[times].contents = home.make(
-                            template_img, {
-                                "U": web_url
-                            });
+                        CardData[times].contents = home.make(template_img, {
+                            "U": web_url
+                        });
                         CardData[times].src = web_url;
                         CardData[times].height = h;
                         CardData[times].design_configured = true;
@@ -348,8 +342,7 @@ This code may only be used under the BSD style.
         }
     }
     home.reserve_card_place = function(times) {
-        var template_reserve =
-            '<div id="reserve_{I}" class="card-reserve {C}-reserve" style="margin-bottom: {B}px; width: {W}px; height: {H}px;">{T}</div>';
+        var template_reserve = '<div id="reserve_{I}" class="card-reserve {C}-reserve" style="margin-bottom: {B}px; width: {W}px; height: {H}px;">{T}</div>';
         var json_reserve = {
             "I": 0,
             "C": "default",
@@ -377,17 +370,13 @@ This code may only be used under the BSD style.
         //console.log("<%d> " + html, times);
         html = $(html);
         if (CardData[times].insert_type == PREPEND) {
-            $(home.griddlesNode["gadget-griddles"].querySelector(
-                target_stream_id)).prepend(html); /*^o^*/
+            $(home.griddlesNode["gadget-griddles"].querySelector(target_stream_id)).prepend(html); /*^o^*/
         } else {
-            $(home.griddlesNode["gadget-griddles"].querySelector(
-                target_stream_id)).append(html);
+            $(home.griddlesNode["gadget-griddles"].querySelector(target_stream_id)).append(html);
         }
         html.ready(function() {
             var index = +(target_stream_id.split("_")[1]);
-            AppData.int_offsetHeights[index] = home.griddlesNode[
-                "gadget-griddles"].querySelector("#stream_" +
-                index).offsetHeight; //doc.getElementById("stream_" + index).offsetHeight;
+            AppData.int_offsetHeights[index] = home.griddlesNode["gadget-griddles"].querySelector("#stream_" + index).offsetHeight; //doc.getElementById("stream_" + index).offsetHeight;
             home.display_card(times);
         });
     }
@@ -423,8 +412,7 @@ This code may only be used under the BSD style.
             z5: "box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);",
             z6: "box-shadow: 0 40px 77px 0 rgba(0, 0, 0, 0.22);",
         }
-        var template_shadow =
-            "<div class='shadow shadow_bottom' style='{B}'></div><div class='shadow shadow_top' style='{T}'></div>";
+        var template_shadow = "<div class='shadow shadow_bottom' style='{B}'></div><div class='shadow shadow_top' style='{T}'></div>";
         var html_shadow = home.make(template_shadow, {
             "B": z_bottoms["z" + int_z_depth],
             "T": z_tops["z" + int_z_depth]
@@ -436,8 +424,7 @@ This code may only be used under the BSD style.
         // var shadow_bottom = '<div class="shadow-bottom"></div>';
         // var shadow_top = '<div class="shadow-top"></div>';
         var shadow = home.get_sahdow_code(CardData[times].shadow_depth);
-        var template_card =
-            '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px; border-radius: {R}px;" data-clickable="card">{T}</div>';
+        var template_card = '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px; border-radius: {R}px;" data-clickable="card">{T}</div>';
         var contents = CardData[times].contents; // chrome appsでの外部画像の場合の処理は別途用意
         var radius = 0;
         if (CardData[times].border_radius != undefined) {
@@ -454,13 +441,11 @@ This code may only be used under the BSD style.
         var html = home.make(template_card, json_card);
         clog(html);
         html = $(html);
-        $(home.griddlesNode["gadget-griddles"].querySelector(
-            "#reserve_" + times)).append(html); /*^o^*/
+        $(home.griddlesNode["gadget-griddles"].querySelector("#reserve_" + times)).append(html); /*^o^*/
         html.ready(function() {
             // 再帰的にreserve_card_placeを呼ぶ
             // 非表示状態を表示状態に変更する
-            var card = home.griddlesNode["gadget-griddles"].querySelector(
-                "#reserve_" + times); //$("#reserve_" + times)[0];
+            var card = home.griddlesNode["gadget-griddles"].querySelector("#reserve_" + times); //$("#reserve_" + times)[0];
             //console.log("%" + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream));
             var offset = card.offsetLeft + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream);
             var delay = offset / 1000;
@@ -471,14 +456,10 @@ This code may only be used under the BSD style.
             //console.log(rate);
             //delay = 0;
             home.griddlesNode["gadget-griddles"].querySelector("#card_" + times).style.transitionDelay = delay * rate + "s"; /*console.log(delay * 0.01);0.224*/
-            $(home.griddlesNode["gadget-griddles"].querySelector(
-                "#card_" + times)).removeClass(
-                'card-non-visible');
+            $(home.griddlesNode["gadget-griddles"].querySelector("#card_" + times)).removeClass('card-non-visible');
             if (AppData.bool_abort_flag == false) {
                 // 中断フラグが false ならば続行
-                if (user_settings.one_time_loading_card_number !=
-                    false && times == home.stop_number(
-                        LAST_STOP_NUMBER)) {
+                if (user_settings.one_time_loading_card_number != false && times == home.stop_number(LAST_STOP_NUMBER)) {
                     AppData.bool_abort_flag = true;
                 }
                 times = times + 1;
@@ -532,7 +513,7 @@ This code may only be used under the BSD style.
         home.griddlesNode["gadget-griddles"].style.paddingTop = home.int_to_px(user_settings.margin_bottom); /* CH1 */
         var int_screenW = document.body.clientWidth - AppData.int_scrollbar_width //window.innerWidth;
         var int_screenH = window.innerHeight;
-        var int_usingW = (int_screenW * (user_settings.screen_persent /100)); //
+        var int_usingW = (int_screenW * (user_settings.screen_persent / 100)); //
         // 仕様変更: user_settings.screen_persent は常に 100.
         AppData.int_last_window_width = int_screenW; //- AppData.int_scrollbar_width;
         // 使用可能なストリーム数を取得する
@@ -585,11 +566,9 @@ This code may only be used under the BSD style.
         /* Event Listeners */
     $(window).resize("resize", home.window_resized);
     (function() {
-        var class_griddles = document.getElementsByClassName(
-            "home-griddles");
+        var class_griddles = document.getElementsByClassName("home-griddles");
         for (var i = 0; i < class_griddles.length; i++) {
-            class_griddles[i].addEventListener("click", home.onclick,
-                false);
+            class_griddles[i].addEventListener("click", home.onclick, false);
         }
     })();
     home.init_delay = function() {
@@ -646,8 +625,7 @@ This code may only be used under the BSD style.
              */
             var g_wrapper = document.querySelector("griddles-ui-card").wrappedBy;
             if (g_wrapper == undefined || g_wrapper == "") {
-                document.querySelector("griddles-ui-card").wrapper =
-                    scroll_wrappers[0];
+                document.querySelector("griddles-ui-card").wrapper = scroll_wrappers[0];
                 g_wrapper = scroll_wrappers[0];
             }
             /* scroll_wrapperに値を設定する。 scroll_wrapperはscroll_setのkeyである。 */
@@ -671,18 +649,13 @@ This code may only be used under the BSD style.
                 },
                 "core_scroll_header_panel": {
                     scroll_stage: function() {
-                        return document.querySelector(
-                            'core-scroll-header-panel').scroller
+                        return document.querySelector('core-scroll-header-panel').scroller
                     },
                     sh: function(max_stream_index) {
-                        return AppData.int_offsetHeights[
-                            max_stream_index] + $(
-                            "core-toolbar").height()
+                        return AppData.int_offsetHeights[max_stream_index] + $("core-toolbar").height()
                     },
                     sp: function() {
-                        return $("#panel").height() + document.querySelector(
-                                'core-scroll-header-panel').scroller
-                            .scrollTop
+                        return $("#panel").height() + document.querySelector('core-scroll-header-panel').scroller.scrollTop
                     }
                 },
                 "user_div_element": {
@@ -690,30 +663,24 @@ This code may only be used under the BSD style.
                         return document.getElementById(g_wrapper)
                     },
                     sh: function(max_stream_index) {
-                        return AppData.int_offsetHeights[
-                            max_stream_index]
+                        return AppData.int_offsetHeights[max_stream_index]
                     },
                     sp: function() {
-                        return $(scroll_stage).height() + $(
-                            scroll_stage).scrollTop()
+                        return $(scroll_stage).height() + $(scroll_stage).scrollTop()
                     }
                 }
             }
             var scroll_stage = scroll_set[scroll_wrapper].scroll_stage();
             scroll_stage.addEventListener("scroll", function() {
-                var max_stream_index = +((home.get_max_height_stream_id())
-                    .split("_")[1]);
-                var sh = scroll_set[scroll_wrapper].sh(
-                    max_stream_index);
+                var max_stream_index = +((home.get_max_height_stream_id()).split("_")[1]);
+                var sh = scroll_set[scroll_wrapper].sh(max_stream_index);
                 var sp = scroll_set[scroll_wrapper].sp();
                 if (((sh - sp) / sh) === 0) {
                     // スクロールによってページの下部に到達した場合
                     console.log(">  " + AppData.render_status);
                     if ((AppData.int_card_times + 1) < CardData.length) { /* ここ */
                         window.clearInterval(home.interval_scroll_zero_session_id);
-                        home.interval_scroll_zero_session_id =
-                            window.setInterval(home.interval_scroll_zero,
-                                10);
+                        home.interval_scroll_zero_session_id = window.setInterval(home.interval_scroll_zero, 10);
                     } else {
                         console.info(":: no card.");
                         //var restart = .scrollEnd();
@@ -725,8 +692,7 @@ This code may only be used under the BSD style.
                         } else {
                             // AppData.int_card_times = AppData.int_card_times -1;
                             // AppData.render_status = ["stop", AppData.int_card_times];
-                            console.info(
-                                ":: RE:: 'restart' is FALSE");
+                            console.info(":: RE:: 'restart' is FALSE");
                         }
                     }
                 }
@@ -751,16 +717,13 @@ This code may only be used under the BSD style.
             return griddles.card_auto_complete(card_json);
         }
     };
-
     /*
      * Polymer code:
      */
-
     /*
      * Copyright (c) 2014 daiz. All rights reserved.
      * This code may only be used under the BSD style license.
      */
-
     Polymer("griddles-ui-card", {
         queryChanged: function(attr, oldValue, newValue) {
             console.info("[Polymer::queryChanged] " + this.query);
@@ -784,44 +747,34 @@ This code may only be used under the BSD style.
             var cardObject = null;
             var cardBody = null;
             if (type == "card" || type == "reserve") {
-                var cardNumber = (e.target.parentNode.id).split(
-                    "_")[1];
+                var cardNumber = (e.target.parentNode.id).split("_")[1];
                 var nowQuery = this.query;
-                cardObject = ((this.cards)[this.query])[
-                    cardNumber];
-                cardBody = (this.$["gadget-griddles"]).querySelector(
-                    "#card_" + cardNumber).childNodes[2];
+                cardObject = ((this.cards)[this.query])[cardNumber];
+                cardBody = (this.$["gadget-griddles"]).querySelector("#card_" + cardNumber).childNodes[2];
             }
             if (window.griddlesAppCardClicked != undefined) {
                 griddlesAppCardClicked([cardObject, cardBody]);
             } else {
-                console.info(
-                    "The function `griddlesAppCardClicked` is undefined."
-                );
+                console.info("The function `griddlesAppCardClicked` is undefined.");
             }
         },
         ready: function() {
             home.griddlesNode = this.$;
-            console.log(document.querySelector(
-                "griddles-ui-card").apis);
+            console.log(document.querySelector("griddles-ui-card").apis);
             if (window.griddlesAppInit != undefined) {
                 griddlesAppInit();
             } else {
-                console.info(
-                    "The function `griddlesAppInit` is undefined."
-                );
+                console.info("The function `griddlesAppInit` is undefined.");
             }
         },
         get griddlesNode() {
             return this.$;
         },
         get cardLength() {
-            return this.$["gadget-griddles"].getElementsByClassName(
-                "card").length;
+            return this.$["gadget-griddles"].getElementsByClassName("card").length;
         },
         get streamLength() {
-            return this.$["gadget-griddles"].getElementsByClassName(
-                "stream").length;
+            return this.$["gadget-griddles"].getElementsByClassName("stream").length;
         },
         /*wrapper: "stage",*/
         layout: {
