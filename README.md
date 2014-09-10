@@ -24,12 +24,12 @@ function griddlesAppCardClicked(card) {
    + default: `document`
    + This properity requires `document`, `core-scroll-header-panel` or `the id of a parent element` as the value. You can specify any one of them.  These values ​​have the following meanings:
    
-      + `document`： `document`: When you designate this value, your &lt;griddles-ui-card&gt; element will be rendered into the entire browser screen. The scroll-ended event fires when the vertical scroll bar reaches to the lower of browser window. [Demo]()
+      + `document`： `document`: When you designate this value, your &lt;griddles-ui-card&gt; element will be rendered into the entire browser screen. The scroll-ended event fires when the vertical scroll bar reaches to the lower of browser window. [Demo](http://griddles-card.appspot.com/griddles-ui-card/griddles-ui-card/demos/demo_document.html)
       
-      + `core-scroll-header-panel`: When you write the &lt;griddles-ui-card&gt; element inside Polymer’s &lt;core-scroll-header-panel&gt;, you have to designate this value. *Beware: this specification might be changed in the future.* [Demo]()
+      + `core-scroll-header-panel`: When you write the &lt;griddles-ui-card&gt; element inside Polymer’s &lt;core-scroll-header-panel&gt;, you have to designate this value. *Beware: this specification might be changed in the future.* [Demo](http://griddles-card.appspot.com/griddles-ui-card/griddles-ui-card/yummy/index.html)
 
       
-      + `the id of a parent element`: You specify this value when the &lt;griddles-ui-card&gt; element is placed inside a block-level parent element like a &lt;div&gt;. The scroll-ended event fires when the vertical scroll bar reaches to the lower of the parent element. A height of the parent element which you have specified in the CSS will be the height of the display area of the &lt;griddles-ui-card&gt;. [Demo]()
+      + `the id of a parent element`: You specify this value when the &lt;griddles-ui-card&gt; element is placed inside a block-level parent element like a &lt;div&gt;. The scroll-ended event fires when the vertical scroll bar reaches to the lower of the parent element. A height of the parent element which you have specified in the CSS will be the height of the display area of the &lt;griddles-ui-card&gt;. [Demo](http://griddles-card.appspot.com/griddles-ui-card/griddles-ui-card/demos/demo_div.html)
 
 
 
