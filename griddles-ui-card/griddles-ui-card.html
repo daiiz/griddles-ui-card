@@ -446,9 +446,15 @@ This code may only be used under the BSD style.
             // 再帰的にreserve_card_placeを呼ぶ
             // 非表示状態を表示状態に変更する
             var card = home.griddlesNode["gadget-griddles"].querySelector("#reserve_" + times); //$("#reserve_" + times)[0];
-            //console.log("%" + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream));
+            /*
+             * Fork written by daiz.
+             *
+             * Original: http://codepen.io/prajwalkman/pen/eLlGw
+             * License:  http://blog.codepen.io/legal/licensing/
+             */
             var offsets = card.offsetLeft + (card.offsetTop - AppData.int_last_min_stream - user_settings.padding_top_of_stream);
             var delay = offsets / 1000;
+            /* */
             var rate = user_settings.displayFromTopLeftToBottomRight;
             if (rate == undefined || rate == false) {
                 rate = 0;
