@@ -473,11 +473,10 @@ This code may only be used under the BSD style.
                 //clog(AppData.int_card_times);
                 home.configure_card_design(times);
             } else if (AppData.bool_abort_flag == true) {
-                //console.info('[1] "bool_abort_flag" is TRUE. (times: ' + times +')');
                 home.ers_times = times;
                 home.event_render_stoped(times);
                 //window.setTimeout(home.delay_event_render_stoped, 100);
-                AppData.bool_abort_flag = false; // これ
+                AppData.bool_abort_flag = false;
             }
         });
     }
@@ -559,7 +558,6 @@ This code may only be used under the BSD style.
             console.log('Resized?');
             var ww = document.body.clientWidth - AppData.int_scrollbar_width; //window.innerWidth;
             var prev_ww = AppData.int_last_window_width;
-            //console.log(ww, prev_ww);
             if (ww != prev_ww) {
                 AppData.int_last_window_width = ww;
                 console.log("> Resized. Change 'ad-padding-left'");
