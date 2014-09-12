@@ -1,5 +1,5 @@
-<link rel="import" href="polymer-animation-group.html">
-<polymer-element name="polymer-shake" extends="polymer-animation-group">
+<html><head><link rel="import" href="polymer-animation-group.html">
+</head><body><polymer-element name="polymer-shake" extends="polymer-animation-group">
   <template>
     <polymer-animation duration="{{period}}">
       <polymer-animation-keyframe>
@@ -11,7 +11,7 @@
         </polymer-animation-prop>
       </polymer-animation-keyframe>
     </polymer-animation>
-    <polymer-animation duration="{{shakeDuration}}" iterationCount="{{shakeIterations}}">
+    <polymer-animation duration="{{shakeDuration}}" iterationcount="{{shakeIterations}}">
       <polymer-animation-keyframe>
         <polymer-animation-prop name="transform" value="{{negTransform}}">
         </polymer-animation-prop>
@@ -37,38 +37,6 @@
     </polymer-animation>
     <content></content>
   </template>
-  <script>
-    Polymer('polymer-shake', {
-			type: 'seq',
-			targetSelector: '',
-			duration: 0.3,
-			magnitude: '10px',
-			period: 0.1,
-			easing: 'ease-in',
-      ready: function() {
-        this.super();
-        this.magnitudeChanged();
-        this.periodChanged();
-      },
-      durationChanged: function() {
-        this.super();
-        this.generate();
-      },
-      magnitudeChanged: function() {
-        this.generate();
-      },
-      periodChanged: function() {
-        this.generate();
-      },
-      generate: function() {
-        this.negTransform = 'translateX(-' + this.magnitude + ')';
-        this.posTransform = 'translateX(' + this.magnitude + ')';
-        this.shakeDuration = this.period * 2;
-        this.shakeIterations = this.duration === 'Infinity' ? this.duration : Math.ceil(this.duration / this.shakeDuration);
-      },
-      get timingProps() {
-        return {};
-      }
-    });
-  </script>
+  <script src="polymer-shake.html.0.js"></script>
 </polymer-element>
+</body></html>

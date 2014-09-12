@@ -2,8 +2,7 @@
 Copyright 2013 The Toolkitchen Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer UI Elements
  */
@@ -29,59 +28,23 @@ license that can be found in the LICENSE file.
  * @class polymer-ui-submenu-item
  * @extends polymer-ui-menu-item
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer-ui-theme-aware/polymer-ui-theme-aware.html">
 <link rel="import" href="../polymer-ui-menu-item/polymer-ui-menu-item.html">
 <link rel="import" href="../polymer-ui-menu/polymer-ui-menu.html">
 <link rel="import" href="../polymer-collapse/polymer-collapse.html">
 
-<polymer-element name="polymer-ui-submenu-item" extends="polymer-ui-menu-item" attributes="selected selectedItem">
+</head><body><polymer-element name="polymer-ui-submenu-item" extends="polymer-ui-menu-item" attributes="selected selectedItem">
   <template>
     <link rel="stylesheet" href="polymer-ui-submenu-item.css">
     <polymer-ui-menu-item id="item" src="{{src}}" label="{{label}}" icon="{{icon}}" active?="{{active}}" on-tap="{{activate}}">
       <content select=".item-content"></content>
     </polymer-ui-menu-item>
-    <polymer-ui-menu id="menu" selected="{{selected}}" selectedItem="{{selectedItem}}">
+    <polymer-ui-menu id="menu" selected="{{selected}}" selecteditem="{{selectedItem}}">
       <content></content>
     </polymer-ui-menu>
-    <polymer-collapse targetId="menu" closed="{{collapsed}}"></polymer-collapse>
+    <polymer-collapse targetid="menu" closed="{{collapsed}}"></polymer-collapse>
   </template>
-  <script>
-    Polymer('polymer-ui-submenu-item', {
-      publish: {
-        active: {value: false, reflect: true}
-      },
-      collapsed: true,
-      get items() {
-        return this.$.menu.items;
-      },
-      hasItems: function() {
-        return !!this.items.length;
-      },
-      unselectAllItems: function() {
-        this.$.menu.selected = null;
-        this.$.menu.clearSelection();
-      },
-      activeChanged: function() {
-        if (this.hasItems()) {
-          this.collapsed = !this.active;
-        }
-        if (!this.active) {
-          this.unselectAllItems();
-        }
-        this.$.item.classList.toggle('no-active-bg', this.hasItems());
-      },
-      activate: function() {
-        if (this.hasItems() && this.active) {
-          this.collapsed = !this.collapsed;
-          this.unselectAllItems();
-          this.fire("polymer-select", {isSelected: true, item: this});
-        }
-      },
-      getItemHeight: function() {
-        return this.$ && this.$.item && this.$.item.offsetHeight;
-      }
-    });
-  </script>
+  <script src="polymer-ui-submenu-item.html.0.js"></script>
 </polymer-element>
+</body></html>

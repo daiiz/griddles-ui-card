@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<!--
+<!DOCTYPE html><!--
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<html>
-<head>
+--><html><head>
   <title>Selection</title>
   <script src="../platform/platform.js"></script>
   <link rel="import" href="core-selection.html">
 </head>
-<body unresolved>
+<body unresolved="">
 
   <polymer-element name="selection-example">
     <template>
@@ -34,19 +31,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <content></content>
       </ul>
 
-      <core-selection id="selection" multi on-core-select="{{selectAction}}"></core-selection>
+      <core-selection id="selection" multi="" on-core-select="{{selectAction}}"></core-selection>
 
     </template>
-    <script>
-    Polymer('selection-example', {
-      itemTapAction: function(e, detail, sender) {
-        this.$.selection.select(e.target);
-      },
-      selectAction: function(e, detail, sender) {
-        detail.item.classList.toggle('selected', detail.isSelected);
-      }
-    });
-    </script>
+    <script src="demo.html.0.js"></script>
   </polymer-element>
 
   <selection-example>
@@ -55,5 +43,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <li>Blue</li>
   </selection-example>
   
-</body>
-</html>
+
+
+</body></html>

@@ -1,11 +1,9 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html><html><head>
     <title>polymer-ui-icon</title>
     <script src="../platform/platform.js"></script>
     <link rel="import" href="polymer-ui-icon.html">
   </head>
-  <body unresolved>
+  <body unresolved="">
     <div>
       <template repeat="{{}}">
         <polymer-ui-icon icon="{{}}"></polymer-ui-icon>
@@ -21,7 +19,7 @@
         <polymer-ui-icon icon="{{}}"></polymer-ui-icon>
       </template>
     </div>
-    <br />
+    <br>
     <div theme="polymer-ui-light-theme">
       <template repeat="{{}}">
         <span style="display: inline-block; width: 164px; border: 1px dotted whitesmoke;">
@@ -30,14 +28,7 @@
       </template>
     </div>
     <polymer-ui-icon id="meta"></polymer-ui-icon>
-    <script>
-      addEventListener('polymer-ready', function() {
-        var icons = Object.keys(document.querySelector('#meta').getIconset().iconMap);
-        var plates = document.querySelectorAll('template');
-        for (var i = 0, p; p=plates[i]; i++) {
-          p.model = icons;
-        }
-      });
-    </script>
-  </body>
-</html>
+    <script src="demo.html.0.js"></script>
+  
+
+</body></html>

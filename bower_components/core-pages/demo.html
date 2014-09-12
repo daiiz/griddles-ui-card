@@ -1,6 +1,4 @@
-﻿<!doctype html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -91,7 +89,7 @@
   </style>
 
 </head>
-<body unresolved>
+<body unresolved="">
 
   <core-pages id="first" selected="0">
     <div>One</div>
@@ -109,22 +107,8 @@
     <div>Five</div>
   </core-pages>
 
-  <script>
-    document.querySelector('#first').onclick = function(e) {
-      this.selected = (this.selected + 1) % this.items.length;      
-    };
+  <script src="demo.html.0.js"></script>
 
-    document.querySelector('core-pages.fancy').onclick = function(e) {
-      this.selected = (this.selected + 1) % this.items.length;
-      this.async(function() {
-        if (this.selectedIndex == 0) {
-          this.selectedItem.classList.remove('begin');
-        } else if (this.selectedIndex == this.items.length - 1) {
-          this.items[0].classList.add('begin');
-        }
-      });
-    };
-  </script>
 
-</body>
-</html>
+
+</body></html>

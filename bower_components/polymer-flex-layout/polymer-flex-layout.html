@@ -2,8 +2,7 @@
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer Elements
  */
@@ -96,57 +95,14 @@ license that can be found in the LICENSE file.
  * @type boolean
  * @default false
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="polymer-flex-layout" attributes="vertical align justify isContainer">
+</head><body><polymer-element name="polymer-flex-layout" attributes="vertical align justify isContainer">
   <template>
     <link rel="stylesheet" polymer-scope="controller" href="polymer-flex-layout.css">
     <link rel="stylesheet" href="polymer-flex-layout.css">
     <content></content>
   </template>
-  <script>
-    Polymer('polymer-flex-layout', {
-      vertical: false,
-      isContainer: false,
-      layoutContainer: null,
-      enteredView: function() {
-        this.installControllerStyles();
-        this.layoutContainer = this.isContainer ? 
-            this : (this.parentNode.host || this.parentNode);
-        this.verticalChanged();
-        this.alignChanged();
-        this.justifyChanged();
-      },
-      leftView: function() {
-        this.layoutContainer = null;
-      },
-      layoutContainerChanged: function(old) {
-        if (old) {
-          old.classList.remove('flexbox');
-        }
-        this.style.display = this.layoutContainer === this ? '' : 'none';
-        if (this.layoutContainer) {
-          this.layoutContainer.classList.add('flexbox');
-        }
-      },
-      switchContainerClass: function(prefix, old, name) {
-        if (this.layoutContainer && name) {
-          this.layoutContainer.classList.switch(
-              prefix + old, prefix + name);
-        }
-      },
-      verticalChanged: function() {
-        if (this.layoutContainer) {
-          this.layoutContainer.classList.toggle('column', this.vertical);
-        }
-      },
-      alignChanged: function(old) {
-        this.switchContainerClass('align-', old, this.align);
-      },
-      justifyChanged: function(old) {
-        this.switchContainerClass('justify-', old, this.justify);
-      }
-    });
-  </script>
+  <script src="polymer-flex-layout.html.0.js"></script>
 </polymer-element>
+</body></html>

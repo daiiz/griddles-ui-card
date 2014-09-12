@@ -2,8 +2,7 @@
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer Elements
  */
@@ -21,10 +20,9 @@ license that can be found in the LICENSE file.
  *
  * @class polymer-media-query
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="polymer-media-query" attributes="query queryMatches">
+</head><body><polymer-element name="polymer-media-query" attributes="query queryMatches">
   <template>
     <style>
       :host {
@@ -32,43 +30,6 @@ license that can be found in the LICENSE file.
       }
     </style>
   </template>
-  <script>
-
-    Polymer('polymer-media-query', {
-      /**
-       * The Boolean return value of the media query
-       * @attribute queryMatches
-       * @type Boolean
-       * @default false
-       */
-      queryMatches: false,
-      /**
-       * The CSS media query to evaulate
-       * @attribute query
-       * @type string
-       * @default ''
-       */
-      query: '',
-      ready: function() {
-        this._mqHandler = this.queryHandler.bind(this);
-        this._mq = null;
-      },
-      queryChanged: function() {
-        if (this._mq) {
-          this._mq.removeListener(this._mqHandler);
-        }
-        var query = this.query;
-        if (query[0] !== '(') {
-          query = '(' + this.query + ')';
-        }
-        this._mq = window.matchMedia(query);
-        this._mq.addListener(this._mqHandler);
-        this.queryHandler(this._mq);
-      },
-      queryHandler: function(mq) {
-        this.queryMatches = mq.matches;
-        this.asyncFire('polymer-mediachange', mq);
-      }
-    });
-  </script>
+  <script src="polymer-media-query.html.0.js"></script>
 </polymer-element>
+</body></html>

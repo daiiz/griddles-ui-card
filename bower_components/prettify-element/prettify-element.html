@@ -1,4 +1,4 @@
-<link rel="import" href="prettify-import.html">
+<html><head><link rel="import" href="prettify-import.html">
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
@@ -32,7 +32,7 @@ Element wrapper for the `google-code-prettify` (https://code.google.com/p/google
 @status alpha
 @snap snap.png
 -->
-<polymer-element name="prettify-element" attributes="text">
+</head><body><polymer-element name="prettify-element" attributes="text">
 
   <template>
 
@@ -86,26 +86,7 @@ Element wrapper for the `google-code-prettify` (https://code.google.com/p/google
 
   </template>
 
-  <script>
-
-    Polymer('prettify-element', {
-
-      domReady: function() {
-        if (!this.text) {
-          if (this.firstElementChild && this.firstElementChild.localName === 'template') {
-            this.text = this.firstElementChild.innerHTML;
-          } else {
-            this.text = this.innerHTML;
-          }
-        }
-      },
-
-      textChanged: function() {
-        this.$.content.innerHTML = prettyPrintOne((this.text || '').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
-      }
-
-    });
-
-  </script>
+  <script src="prettify-element.html.0.js"></script>
 
 </polymer-element>
+</body></html>

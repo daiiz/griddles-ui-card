@@ -1,12 +1,8 @@
-
-<!doctype html>
-<!--
+<!DOCTYPE html><!--
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<html>
-  <head>
+--><html><head>
     <title>Breadcrumbs</title>
     <script src="../platform/platform.js"></script>
     <link rel="import" href="polymer-ui-breadcrumbs.html">
@@ -18,7 +14,7 @@ license that can be found in the LICENSE file.
       }
     </style>
   </head>
-  <body class="polymer-ui-body-text" unresolved>
+  <body class="polymer-ui-body-text" unresolved="">
     <polymer-element name="x-test">
       <template>
         <style>
@@ -27,26 +23,16 @@ license that can be found in the LICENSE file.
           }
         </style>
         <polymer-ui-toolbar>
-          <polymer-ui-breadcrumbs crumbs="{{crumbs}}" selected="{{selected}}" selectedCrumb="{{selectedCrumb}}"></polymer-ui-breadcrumbs>
+          <polymer-ui-breadcrumbs crumbs="{{crumbs}}" selected="{{selected}}" selectedcrumb="{{selectedCrumb}}"></polymer-ui-breadcrumbs>
         </polymer-ui-toolbar>
         <br><br>
         <div>label: {{selectedCrumb.label}}</div>
         selected: <input value="{{selected}}">
       </template>
-      <script>
-        Polymer('x-test', {
-          ready: function() {
-            this.crumbs = [
-              {label: 'Overview'}, 
-              {label: 'Subitem1'}, 
-              {label: 'Subitem2'},
-              {label: 'Subitem3'}
-            ];
-          }
-        });
-      </script>
+      <script src="demo.html.0.js"></script>
     </polymer-element>
     
     <x-test></x-test>
-  </body>
-</html>
+  
+
+</body></html>

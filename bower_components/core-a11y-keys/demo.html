@@ -6,10 +6,7 @@
     The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
+--><!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <title>Core A11y Keys demo</title>
   <script src="../platform/platform.js"></script>
@@ -28,13 +25,7 @@
     <div id="target" tabindex="0">focus this</div>
     <pre id="output"></pre>
   </template>
-  <script>
-    addEventListener('template-bound', function(ev) {
-      ev.target.print = function(ev) {
-        console.log(ev.detail);
-        this.$.output.textContent += ev.detail.key + ' pressed!\n';
-      }
-    });
-  </script>
-</body>
-</html>
+  <script src="demo.html.0.js"></script>
+
+
+</body></html>

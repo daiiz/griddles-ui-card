@@ -5,9 +5,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<!--
+--><!--
 `paper-checkbox` is a button that can be either checked or unchecked.  User
 can tap the checkbox to check or uncheck it.  Usually you use checkboxes
 to allow user to select multiple options from a set.  If you have a single
@@ -50,55 +48,24 @@ To change the checbox unchecked color:
 @element paper-checkbox
 @extends paper-radio-button
 @homepage github.io
--->
+--><html><head><link rel="import" href="../paper-radio-button/paper-radio-button.html">
 
-<link rel="import" href="../paper-radio-button/paper-radio-button.html">
-
-<polymer-element name="paper-checkbox" extends="paper-radio-button" role="checkbox">
+</head><body><polymer-element name="paper-checkbox" extends="paper-radio-button" role="checkbox">
 <template>
 
   <link rel="stylesheet" href="paper-checkbox.css">
 
-  <div id="checkboxContainer" class="{{ {labeled: label} | tokenList }}" >
+  <div id="checkboxContainer" class="{{ {labeled: label} | tokenList }}">
   
     <paper-ripple id="ink" class="circle recenteringTouch" checked?="{{!checked}}"></paper-ripple>
      
-    <div id="checkbox" on-animationend="{{checkboxAnimationEnd}}" on-webkitAnimationEnd="{{checkboxAnimationEnd}}"></div>
+    <div id="checkbox" on-animationend="{{checkboxAnimationEnd}}" on-webkitanimationend="{{checkboxAnimationEnd}}"></div>
     
   </div>
   
   <div id="checkboxLabel" hidden?="{{!label}}">{{label}}<content></content></div>
 
 </template>
-<script>
-
-  Polymer('paper-checkbox', {
-    
-    /**
-     * Fired when the checked state changes.
-     *
-     * @event change
-     */
-    
-    toggles: true,
-
-    checkedChanged: function() {
-      var cl = this.$.checkbox.classList;
-      cl.toggle('checked', this.checked);
-      cl.toggle('unchecked', !this.checked);
-      cl.toggle('checkmark', !this.checked);
-      cl.toggle('box', this.checked);
-      this.setAttribute('aria-checked', this.checked ? 'true': 'false');
-      this.fire('change');
-    },
-
-    checkboxAnimationEnd: function() {
-      var cl = this.$.checkbox.classList;
-      cl.toggle('checkmark', this.checked && !cl.contains('checkmark'));
-      cl.toggle('box', !this.checked && !cl.contains('box'));
-    }
-
-  });
-  
-</script>
+<script src="paper-checkbox.html.0.js"></script>
 </polymer-element>
+</body></html>

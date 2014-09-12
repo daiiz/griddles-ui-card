@@ -1,11 +1,8 @@
-﻿<!doctype html>
-<!--
+<!DOCTYPE html><!--
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<html>
-<head>
+--><html><head>
   <title>paper-shadow</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -58,7 +55,7 @@ license that can be found in the LICENSE file.
 
   </style>
 </head>
-<body unresolved>
+<body unresolved="">
 
   <paper-shadow></paper-shadow>
 
@@ -95,13 +92,7 @@ license that can be found in the LICENSE file.
         </style>
         <paper-shadow z="{{z}}"></paper-shadow>
       </template>
-      <script>
-        Polymer('x-card', {
-          publish: {
-            z: {value: 1, reflect: true}
-          }
-        });
-      </script>
+      <script src="demo.html.0.js"></script>
     </polymer-element>
     <div>
       <x-card class="card" z="2"></x-card>
@@ -170,36 +161,9 @@ license that can be found in the LICENSE file.
           border-radius: 24px;
         }
       </style>
-      <paper-shadow z="{{z}}" animated></paper-shadow>
+      <paper-shadow z="{{z}}" animated=""></paper-shadow>
     </template>
-    <script>
-      Polymer('x-shadow', {
-        publish: {
-          z: {value: 0, reflect: true}
-        },
-        up: true,
-        zChanged: function() {
-          this.fire('shadow-z-changed');
-        },
-        tapAction: function() {
-          if (this.up) {
-            if (this.z < 5) {
-              this.z += 1;
-            } else {
-              this.z -= 1;
-              this.up = false;
-            }
-          } else {
-            if (this.z > 0) {
-              this.z -= 1;
-            } else {
-              this.z += 1;
-              this.up = true;
-            }
-          }
-        }
-      });
-    </script>
+    <script src="demo.html.1.js"></script>
   </polymer-element>
 
   <section>
@@ -211,14 +175,7 @@ license that can be found in the LICENSE file.
       <br>
       Current z-index = <span id="card-z">0</span>
     </aside>
-    <script>
-      document.addEventListener('polymer-ready', function() {
-        var fab = document.getElementById('card');
-        fab.addEventListener('shadow-z-changed', function() {
-          document.getElementById('card-z').textContent = fab.z;
-        });
-      });
-    </script>
+    <script src="demo.html.2.js"></script>
   </section>
 
   <section>
@@ -235,15 +192,9 @@ license that can be found in the LICENSE file.
       <br>
       Current z-index = <span id="fab-z">0</span>
     </aside>
-    <script>
-      document.addEventListener('polymer-ready', function() {
-        var fab = document.getElementById('fab');
-        fab.addEventListener('shadow-z-changed', function() {
-          document.getElementById('fab-z').textContent = fab.z;
-        });
-      });
-    </script>
+    <script src="demo.html.3.js"></script>
   </section>
 
-</body>
-</html>
+
+
+</body></html>

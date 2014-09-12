@@ -2,8 +2,7 @@
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer UI Elements
  */
@@ -33,45 +32,14 @@ license that can be found in the LICENSE file.
  * @type object
  * @default null
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer-ui-arrow/polymer-ui-arrow.html">
 
-<polymer-element name="polymer-ui-nav-arrow" extends="polymer-ui-arrow" attributes="target">
+</head><body><polymer-element name="polymer-ui-nav-arrow" extends="polymer-ui-arrow" attributes="target">
   <template>
     <link rel="stylesheet" href="polymer-ui-nav-arrow.css">
     <shadow></shadow>
   </template>
-  <script>
-    Polymer('polymer-ui-nav-arrow', {
-      direction: 'left',
-      size: 9,
-      borderColor: '#000',
-      show: false,
-      enteredView: function() {
-        this.showChanged();
-      },
-      showChanged: function() {
-        this.classList.toggle('hidden', !this.show);
-      },
-      targetChanged: function() {
-        this.show = !!this.target;
-        if (this.target) {
-          this.asyncMethod('move');
-        }
-      },
-      translateY: function(y) {
-        var s = this.style;
-        s.webkitTransform = s.mozTransform = s.msTransform = s.transform = 
-          'translate3d(0,' + y + 'px,0)';
-      },
-      move: function() {
-        var t = this.target;
-        // if the target has getOffsetMiddle(), use that instead
-        var y = t.getOffsetMiddle ? t.getOffsetMiddle() : 
-            (t.offsetTop + t.offsetHeight/2);
-        this.translateY(y);
-      }
-    });
-  </script>
+  <script src="polymer-ui-nav-arrow.html.0.js"></script>
 </polymer-element>
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<!DOCTYPE html><html><head>
 		<title>polymer-overlay</title>
 		<link rel="import" href="polymer-overlay.html">
 		<script src="../platform/platform.js"></script>
@@ -36,7 +34,7 @@
 			}
 		</style>
 	</head>
-	<body unresolved>
+	<body unresolved="">
 		<polymer-element name="x-dialog" attributes="opened autoCloseDisabled">
 			<template>
 				<style>
@@ -54,19 +52,10 @@
 						box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 					}
 				</style>
-				<polymer-overlay id="overlay" opened="{{opened}}" autoCloseDisabled="{{autoCloseDisabled}}"></polymer-overlay>
+				<polymer-overlay id="overlay" opened="{{opened}}" autoclosedisabled="{{autoCloseDisabled}}"></polymer-overlay>
 				<content></content>
 			</template>
-			<script>
-				Polymer('x-dialog', {
-					ready: function() {
-						this.$.overlay.target = this;
-					},
-					toggle: function() {
-						this.$.overlay.toggle();
-					}
-				});
-			</script>
+			<script src="demo.html.0.js"></script>
 		</polymer-element>
 		<button overlay="#dialog">Toggle Dialog</button>
 		( open styling: 
@@ -85,56 +74,28 @@
 			<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla sapien sed enim sollicitudin laoreet. Suspendisse suscipit, metus ac volutpat sodales, libero magna semper lacus, molestie fringilla massa orci ut arcu. Nullam sodales urna sit amet odio vehicula mattis.</div><br><br>
 			<div>Ut aliquam vulputate congue. Vestibulum pretium pretium nulla quis sollicitudin. Praesent lacinia congue erat nec mattis. Fusce commodo lacus est. Duis turpis eros, ultrices sed aliquet non, blandit egestas velit. Integer a augue nec lorem tristique hendrerit. Curabitur imperdiet risus id enim bibendum vestibulum. Integer id magna at arcu faucibus fermentum vel a augue. Sed fringilla venenatis dolor, in blandit magna molestie luctus. Vestibulum dignissim posuere ultrices. Aenean urna nisl, tincidunt vitae iaculis ut, pharetra nec eros.</div><br><br>
 			<div>
-				<input placeholder="say something..." autofocus oninput="somethingCheck()"></input><br>
+				<input placeholder="say something..." autofocus="" oninput="somethingCheck()"><br>
 				I agree with this wholeheartedly.
 				<x-dialog id="confirmation" class="dialog">
 					Thank you.
 				</x-dialog>
 			</div><br><br>
-			<button overlay-toggle>OK</button>
+			<button overlay-toggle="">OK</button>
 		</x-dialog>
 
 		<br><br>
 
 		<button overlay="#dialog2">Toggle Dialog 2</button>
 
-		<x-dialog id="dialog2" class="dialog polymer-overlay-shake" autoCloseDisabled="true">
+		<x-dialog id="dialog2" class="dialog polymer-overlay-shake" autoclosedisabled="true">
 			<div>
 				<h2>Dialog 2</h2>
 					I'm dizzy.
 			</div>
 			<br><br>
-			<button overlay-toggle>OK</button>
+			<button overlay-toggle="">OK</button>
 		</x-dialog>
-		<script>
-			$ = document.querySelector.bind(document);
+		<script src="demo.html.1.js"></script>
+	
 
-			somethingCheck = function() {
-				$('#confirmation').opened = (event.target.value == 'something');
-			}
-			
-			changeOpening = function(e) {
-				var s = e.target.selectedOptions[0];
-				if (s) {
-					dialog.className = dialog.className.replace(/polymer-[^\s]*/, '')
-					dialog.classList.add(s.textContent);
-				}
-			}
-			
-			modalChange = function(e) {
-				dialog.autoCloseDisabled = e.target.checked;
-			}
-			
-			scrimChange = function(e) {
-				dialog.scrim = e.target.checked;
-			}
-			
-			var overlayButtons = document.querySelectorAll('button[overlay]');
-			Array.prototype.forEach.call(overlayButtons, function(b) {
-				b.addEventListener('tap', function(e) {
-					document.querySelector(e.target.getAttribute('overlay')).toggle();
-				})
-			});
-		</script>
-	</body>
-</html>
+</body></html>

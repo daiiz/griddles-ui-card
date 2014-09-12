@@ -1,14 +1,11 @@
-<!doctype html>
-<!--
+<!DOCTYPE html><!--
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<html>
-<head>
+--><html><head>
   <title>core-scroll-header-panel</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -22,7 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../core-toolbar/core-toolbar.html">
   <link rel="import" href="../core-icon-button/core-icon-button.html">
 
-  <style shim-shadowdom>
+  <style shim-shadowdom="">
 
     html, body {
       height: 100%;
@@ -71,14 +68,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
 
 </head>
-<body unresolved>
+<body unresolved="">
 
-  <core-scroll-header-panel condenses>
+  <core-scroll-header-panel condenses="">
 
     <core-toolbar class="tall">
     
       <core-icon-button icon="arrow-back"></core-icon-button>
-      <div flex></div>
+      <div flex=""></div>
       <core-icon-button icon="search"></core-icon-button>
       <core-icon-button icon="more-vert"></core-icon-button>
       <div class="bottom indent title">Title</div>
@@ -93,19 +90,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
   </core-scroll-header-panel>
   
-  <script>
+  <script src="demo.html.0.js"></script>
   
-    // custom transformation: scale header's title
-    var titleStyle = document.querySelector('.title').style;
-    addEventListener('core-header-transform', function(e) {
-      var d = e.detail;
-      var m = d.height - d.condensedHeight;
-      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
-      titleStyle.transform = titleStyle.webkitTransform = 
-          'scale(' + scale + ') translateZ(0)';
-    });
-  
-  </script>
-  
-</body>
-</html>
+
+
+</body></html>

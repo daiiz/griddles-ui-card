@@ -2,8 +2,7 @@
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer UI Elements
  */
@@ -24,11 +23,10 @@ license that can be found in the LICENSE file.
  *
  * @class polymer-ui-collapsible
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer-collapse/polymer-collapse.html">
 
-<polymer-element name="polymer-ui-collapsible">
+</head><body><polymer-element name="polymer-ui-collapsible">
   <template>
     <link rel="stylesheet" href="polymer-ui-collapsible.css">
     <div on-tap="{{headerTap}}">
@@ -37,44 +35,8 @@ license that can be found in the LICENSE file.
     <div id="collapsibleBody" on-tap="{{bodyTap}}">
       <content></content>
     </div>
-    <polymer-collapse targetId="collapsibleBody" closed="{{!active}}"></polymer-collapse>
+    <polymer-collapse targetid="collapsibleBody" closed="{{!active}}"></polymer-collapse>
   </template>
-  <script>
-    Polymer('polymer-ui-collapsible', {
-      publish: {
-        /**
-         * If true, tapping on the header will not toggle the active state.
-         *
-         * @attribute notap
-         * @type boolean
-         * @default false
-         */
-        notap: false,
-        /**
-         * If true, the body is expanded.
-         *
-         * @attribute active
-         * @type boolean
-         * @default false
-         */
-        active: {value: false, reflect: true}
-      },
-      /** 
-       * Toggle the active state of the collapsible.
-       *
-       * @method toggle
-       */
-      toggle: function() {
-        this.active = !this.active;
-      },
-      headerTap: function() {
-        if (!this.notap) {
-          this.toggle();
-        }
-      },
-      bodyTap: function(e) {
-        e.notap = true;
-      }
-    });
-  </script>
+  <script src="polymer-ui-collapsible.html.0.js"></script>
 </polymer-element>
+</body></html>

@@ -2,8 +2,7 @@
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<!--
+--><!--
 /**
  * @module Polymer UI Elements
  */
@@ -55,12 +54,11 @@ license that can be found in the LICENSE file.
  * @type object
  * @default null
  */
--->
-<link rel="import" href="../polymer/polymer.html">
+--><html><head><link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer-ui-icon/polymer-ui-icon.html">
 <link rel="import" href="../polymer-selector/polymer-selector.html">
 
-<polymer-element name="polymer-ui-breadcrumbs" attributes="crumbs selected selectedCrumb">
+</head><body><polymer-element name="polymer-ui-breadcrumbs" attributes="crumbs selected selectedCrumb">
   <template>
     <link rel="stylesheet" href="polymer-ui-breadcrumbs.css">
     <div id="crumbs">
@@ -69,13 +67,8 @@ license that can be found in the LICENSE file.
         <polymer-ui-icon icon="dropdown"></polymer-ui-icon>
       </template>
     </div>
-    <polymer-selector target="{{$.crumbs}}" itemsSelector="li" selected="{{selected}}" selectedModel="{{selectedCrumb}}"></polymer-selector>
+    <polymer-selector target="{{$.crumbs}}" itemsselector="li" selected="{{selected}}" selectedmodel="{{selectedCrumb}}"></polymer-selector>
   </template>
-  <script>
-    Polymer('polymer-ui-breadcrumbs', {
-      created: function() {
-        this.crumbs = [];
-      }
-    });
-  </script>
+  <script src="polymer-ui-breadcrumbs.html.0.js"></script>
 </polymer-element>
+</body></html>

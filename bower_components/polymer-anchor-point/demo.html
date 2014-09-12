@@ -1,6 +1,4 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html><html><head>
     <title>polymer-anchor-point</title>
     <link rel="import" href="../polymer-ui-icon-button/polymer-ui-icon-button.html">
     <link rel="import" href="../polymer-ui-toolbar/polymer-ui-toolbar.html">
@@ -32,12 +30,12 @@
       <polymer-flex-layout vertical="true"></polymer-flex-layout>
       <polymer-ui-toolbar theme="polymer-ui-light-theme" onclick="toggle(event)">
         <polymer-ui-icon-button icon="menu" anchor-point="bottom left" target-anchor-point="top left"></polymer-ui-icon-button>
-        <div flex></div>
+        <div flex=""></div>
         <polymer-ui-icon-button icon="refresh" anchor-point="bottom center" target-anchor-point="top center"></polymer-ui-icon-button>
-        <div flex></div>
+        <div flex=""></div>
         <polymer-ui-icon-button icon="add" anchor-point="bottom right" target-anchor-point="top right"></polymer-ui-icon-button>
       </polymer-ui-toolbar>
-      <div flex></div>
+      <div flex=""></div>
       <div style="text-align:center">
         <p><strong>Click icon buttons in the toolbars or enter custom <a href="http://dev.w3.org/csswg/css-backgrounds/#the-background-position" target="_blank">anchor-points</a> below.</strong></p>
         <br>
@@ -46,51 +44,17 @@
         <br><br>
         Click <polymer-ui-icon-button icon="settings" onclick="toggleCustom(event)"></polymer-ui-icon-button> for custom
       </div>
-      <div flex></div>
+      <div flex=""></div>
       <polymer-ui-toolbar theme="polymer-ui-light-theme" onclick="toggle(event)">
         <polymer-ui-icon-button icon="drawer" anchor-point="top left" target-anchor-point="bottom left"></polymer-ui-icon-button>
         <polymer-ui-icon-button icon="dots" anchor-point="top center" target-anchor-point="bottom center"></polymer-ui-icon-button>
-        <div flex></div>
+        <div flex=""></div>
         <polymer-ui-icon-button icon="search" anchor-point="top right" target-anchor-point="bottom right"></polymer-ui-icon-button>
       </polymer-ui-toolbar>
     </div>
     <div id="target" onclick="toggle(event)"></div>
     <polymer-anchor-point id="anchorable"></polymer-anchor-point>
-    <script>
-      function toggle(e) {
-        var anchorable = document.querySelector('#anchorable');
-        var target = document.querySelector('#target');
-        var anchor = e.target;
-        if (target.classList.contains('active')) {
-          target.classList.remove('active');
-        } else {
-          var targetAnchorPt = anchor.getAttribute('target-anchor-point');
-          target.setAttribute('anchor-point', targetAnchorPt);
-          target.innerHTML = 'anchor-point: ' + anchor.getAttribute('anchor-point') + '<br>' + 'target anchor-point: ' + targetAnchorPt;
-          anchorable.target = target;
-          anchorable.anchor = anchor;
-          target.classList.add('active');
-          anchorable.apply();
-        }
-      };
-      function toggleCustom(e) {
-        var anchorable = document.querySelector('#anchorable');
-        var target = document.querySelector('#target');
-        var anchor = e.target;
-        if (target.classList.contains('active')) {
-          target.classList.remove('active');
-        } else {
-          var anchorPt = document.querySelector('#customAnchorPt').value;
-          anchor.setAttribute('anchor-point', anchorPt);
-          var targetAnchorPt = document.querySelector('#customTargetAnchorPt').value;
-          target.setAttribute('anchor-point', targetAnchorPt);
-          target.innerHTML = 'anchor-point: ' + anchorPt + '<br>' + 'target anchor-point: ' + targetAnchorPt;
-          anchorable.target = target;
-          anchorable.anchor = anchor;
-          target.classList.add('active');
-          anchorable.apply();
-        }
-      }
-    </script>
-  </body>
-</html>
+    <script src="demo.html.0.js"></script>
+  
+
+</body></html>

@@ -1,11 +1,8 @@
-<!doctype html>
-<!--
+<!DOCTYPE html><!--
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<html>
-  <head>
+--><html><head>
     <title>Cards</title>
     <script src="../platform/platform.js"></script>
     <link rel="import" href="polymer-ui-card.html">
@@ -27,22 +24,15 @@ license that can be found in the LICENSE file.
       }
     </style>
   </head>
-  <body unresolved>
+  <body unresolved="">
     <div id="cards">
-      <polymer-ui-card swipeable>Swipe Me!</polymer-ui-card>
-      <polymer-ui-card swipeable>Swipe Me!</polymer-ui-card>
+      <polymer-ui-card swipeable="">Swipe Me!</polymer-ui-card>
+      <polymer-ui-card swipeable="">Swipe Me!</polymer-ui-card>
       <polymer-ui-card></polymer-ui-card>
-      <polymer-ui-card swipeable>Swipe Me!</polymer-ui-card>
+      <polymer-ui-card swipeable="">Swipe Me!</polymer-ui-card>
       <polymer-ui-card></polymer-ui-card>
     </div>
     
-    <script>
-      document.addEventListener('polymer-ready', function() {
-        document.querySelector('#cards').addEventListener(
-          'polymer-card-swipe-away', function(e) {
-            e.target.parentNode.removeChild(e.target);
-          });
-      })
-    </script>
-  </body>
-</html>
+    <script src="demo.html.0.js"></script>
+  
+</body></html>

@@ -1,6 +1,6 @@
-<link rel="import" href="core-style.html">
+<html><head><link rel="import" href="core-style.html">
 
-<core-style id="my-toolbar">
+</head><body><core-style id="my-toolbar">
   :host {
     height: 54px;
     font-size: 1.3rem;
@@ -9,14 +9,14 @@
   }
 
   polyfill-next-selector {
-    content: ':host > *';
+    content: ':host &gt; *';
   }
-  ::content > * {
+  ::content &gt; * {
     margin: 8px;
   }
 </core-style>
 
-<polymer-element name="my-toolbar" horizontal center layout noscript>
+<polymer-element name="my-toolbar" horizontal="" center="" layout="" noscript="">
   <template>
     <core-style ref="my-toolbar"></core-style>
     <content></content>
@@ -34,13 +34,11 @@
   }
 </core-style>
 
-<script>
-  CoreStyle.g.columns = 3;
-</script>
+<script src="elements.html.0.js"></script>
 
-<polymer-element name="my-panel" vertical center center-justified layout noscript>
+<polymer-element name="my-panel" vertical="" center="" center-justified="" layout="" noscript="">
   <template>
     <core-style ref="my-panel"></core-style>
     <content></content>
   </template>
-</polymer-element>
+</polymer-element></body></html>

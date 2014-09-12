@@ -1,7 +1,8 @@
-var YUMMY2 = "griddles_yummy2";
+var YUMMY2 = "griddles_yummy2_a";
 var MAINKEY = "ごちそう";
 var TAGMANAGE = "タグを管理";
 var griddles_apis = {};
+var yummy2 = {};
 
 function creatingKeyList(data, id) {
   document.getElementById(id).innerHTML = '<paper-item label="すべてのごちそう" class="menu_item" id="btn_all_gochiso" data-label="ごちそう"></paper-item>';
@@ -39,18 +40,18 @@ function creatingKeyList(data, id) {
     }
 }
 
-function miils(query) {
-  var cards = [];
-  var rg = new RegExp("," + query + ",", "gi");
-  smpls = JSON.parse(localStorage[YUMMY2]);
-  //var queries = creatingKeyList(smpls, "#menus");
+function miils() {
+  /*smpls = JSON.parse(localStorage[YUMMY2]);*/
+  appStorage({"key": YUMMY2}, "get", function(e, keys) {
+    var cards = [];
+    var query = yummy2.query;
+    var rg = new RegExp("," + query + ",", "gi");
+    var key = keys[0];
+    var smpls = e[key];
     for(var i = 0; i < smpls.length; i++) {
      if(i > 0) {
       h = false;
       var obj = smpls[i];
-      //var local_name = obj.page.split("/");
-      //local_name = local_name[local_name.length - 1];
-      //var src = "photos/"+ local_name +".jpg";
       var tags = smpls[i].tags.ys;
       var str_tags = "," + tags.toString() + ",";
       var res = str_tags.search(rg);
@@ -68,7 +69,6 @@ function miils(query) {
         }
       }
     }
-    /**/
     var headerBgURL = "";
     if(query != MAINKEY && cards.length > 0) {
       var r = Math.floor(Math.random() * (cards.length));
@@ -78,12 +78,39 @@ function miils(query) {
     }
     changeHeadImage(headerBgURL);
     
-    return cards;
+    /*return cards;*/
+    cards[query] = cards;
+    document.querySelector("griddles-ui-card").cards = cards;
+    document.querySelector("griddles-ui-card").query = query;
+  });
 };
+
+function isChromeApp() {
+    var res = false;
+    if(chrome != undefined) {
+        if(chrome.app.window != undefined) {
+        // 「chrome アプリ」である
+        res = true;
+        }
+    }
+  return res;
+}
 
 function changeHeadImage(url) {
   var headerBg = document.querySelector("core-scroll-header-panel").headerBg;
-  headerBg.style.backgroundImage = "url('"+ url +"')";
+  if(isChromeApp() == true) {
+      var xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'blob';
+          xhr.onload = function(e) {
+              var blob_url = window.webkitURL.createObjectURL(this.response);
+              url = blob_url;
+              headerBg.style.backgroundImage = "url('"+ url +"')";
+          }
+          xhr.send();
+  }else {
+      headerBg.style.backgroundImage = "url('"+ url +"')";
+  }
 }
 
 function griddlesAppCardClicked(card) {
@@ -96,14 +123,21 @@ function griddlesAppCardClicked(card) {
 function ImportingData() {
    var import_code = document.getElementById("dialog_input_import").value;
    if(import_code != "") {
-      localStorage[YUMMY2] = import_code;
-      griddlesAppInit();
+      /*
+       *localStorage[YUMMY2] = import_code;
+       *griddlesAppInit();
+       */
+       var import_code = JSON.parse(import_code);
+       appStorage({"key": YUMMY2, "value": import_code}, "set", griddlesAppInit);
    }
 }
 
 function removingData() {
-   localStorage.removeItem(YUMMY2);
-   griddlesAppInit();
+  /*
+   *localStorage.removeItem(YUMMY2);
+   *griddlesAppInit();
+   */
+   appStorage({"key": YUMMY2}, "remove", griddlesAppInit);
 }
 
 function toggleDialog(id) {
@@ -124,15 +158,19 @@ function griddlesAppInit() {
     displayFromTopLeftToBottomRight: 0.01
   };
   var smpls = sample_data;
-  if(localStorage[YUMMY2] != undefined && localStorage[YUMMY2] != "") {
-       var code = JSON.parse(localStorage[YUMMY2]);
-       if(code != undefined) {
-          smpls = code;
-       }
-  }else if(localStorage[YUMMY2] == undefined) {
-       localStorage[YUMMY2] = JSON.stringify(smpls);
-  }
-  var queries = creatingKeyList(smpls, "menus");
+  appStorage({"key": YUMMY2}, "get", function(e, keys) {
+   var key = keys[0];
+   var json = e[key];
+   if(json != undefined && json != null) {
+       smpls = json;
+       var queries = creatingKeyList(smpls, "menus");
+   }else if(json == undefined) {
+       //localStorage[YUMMY2] = JSON.stringify(smpls);
+       appStorage({"key": YUMMY2, "value": smpls}, "set", function() {
+           var queries = creatingKeyList(smpls, "menus");
+       })
+   }
+  });
 }
 
 /*　
@@ -166,9 +204,14 @@ window.addEventListener("click", function(e) {
    var dataset = e.target.dataset;
    if(dataset.label != undefined && dataset.label != TAGMANAGE) {
        var cards = document.querySelector("griddles-ui-card").cards;//{};
-       cards[dataset.label] = miils(dataset.label);
-       document.querySelector("griddles-ui-card").cards = cards;
-       document.querySelector("griddles-ui-card").query = dataset.label;
+       yummy2.query = dataset.label;
+       miils();
+       
+       /*
+        *cards[dataset.label] = miils(dataset.label);
+        *document.querySelector("griddles-ui-card").cards = cards;
+        *document.querySelector("griddles-ui-card").query = dataset.label;
+        */
        // var isRunning = home.new_session(miils(dataset.label), true);
    }
    

@@ -1,6 +1,4 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <title>polymer api</title>
   <style>
     html, body {
@@ -37,28 +35,13 @@
   <link rel="import" href="../polymer-home-page/polymer-home-page.html">
 </head>
 <body>
-  <img detector src="../polymer-home-page/bowager-logo.png" onerror="noviewer()">
-  <polymer-home-page ifviewer></polymer-home-page>
-  <div ifnoviewer>
+  <img detector="" src="../polymer-home-page/bowager-logo.png" onerror="noviewer()">
+  <polymer-home-page ifviewer=""></polymer-home-page>
+  <div ifnoviewer="">
     <span id="remote">[remote]</span>
     <iframe></iframe>
   </div>
   <!-- -->
-  <script>
-    var remoteDocs = 'http://turbogadgetry.com/bowertopia/components/';
-    // if no local info viewer, load it remotely
-    function noviewer() {
-      document.body.setAttribute('noviewer', '');
-      var path = location.pathname.split('/');
-      var module = path.pop() || path.pop();
-      document.querySelector('iframe').src = remoteDocs + module;
-      document.querySelector('title').textContent = module;
-    }
-    // for testing only
-    var opts = window.location.search;
-    if (opts.indexOf('noviewer') >= 0) {
-      noviewer();
-    }
-  </script>
-</body>
-</html>
+  <script src="index (1).html.0.js"></script>
+
+</body></html>

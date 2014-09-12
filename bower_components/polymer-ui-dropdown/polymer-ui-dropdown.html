@@ -1,8 +1,8 @@
-<link href="../polymer/polymer.html" rel="import">
+<html><head><link href="../polymer/polymer.html" rel="import">
 <link href="../polymer-animation/polymer-translate.html" rel="import">
 <link href="../polymer-overlay/polymer-overlay.html" rel="import">
 <link href="../polymer-ui-menu/polymer-ui-menu.html" rel="import">
-<polymer-element name="polymer-ui-dropdown" extends="polymer-ui-menu" on-polymer-select="{{toggle}}">
+</head><body><polymer-element name="polymer-ui-dropdown" extends="polymer-ui-menu" on-polymer-select="{{toggle}}">
   <template>
     <style>
       :host {
@@ -21,19 +21,8 @@
       }
     </style>
     <polymer-overlay id="dropdownOverlay" transitions="{{transitions}}"></polymer-overlay>
-    <polymer-translate id="dropdownTransition" fromY="-100%" easing="ease-out" duration="0.1"></polymer-translate>
+    <polymer-translate id="dropdownTransition" fromy="-100%" easing="ease-out" duration="0.1"></polymer-translate>
     <shadow></shadow>
   </template>
-  <script>
-    Polymer('polymer-ui-dropdown', {
-      ready: function() {
-        this.super();
-        this.transitions = [this.$.dropdownTransition, null];
-        this.$.dropdownOverlay.target = this;
-      },
-      toggle: function() {
-        this.$.dropdownOverlay.toggle();
-      }
-    });
-  </script>
-</polymer-element>
+  <script src="polymer-ui-dropdown.html.0.js"></script>
+</polymer-element></body></html>

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <title>polymer-ui-dropup</title>
   <link rel="import" href="polymer-ui-dropup.html">
-  <link rel="import" href="../polymer-ui-icon-button/polymer-ui-icon-button.html" rel="import">
-  <link rel="import" href="../polymer-ui-menu-item/polymer-ui-menu-item.html" rel="import">
-  <link rel="import" href="../polymer-ui-toolbar/polymer-ui-toolbar.html" rel="import">
+  <link rel="import" href="../polymer-ui-icon-button/polymer-ui-icon-button.html">
+  <link rel="import" href="../polymer-ui-menu-item/polymer-ui-menu-item.html">
+  <link rel="import" href="../polymer-ui-toolbar/polymer-ui-toolbar.html">
   <script src="../platform/platform.js"></script>
   <link rel="stylesheet" href="../polymer-ui-base/base.css">
   <style>
@@ -17,7 +15,7 @@
 <body class="polymer-ui-body-text polymer-ui-full-bleed polymer-ui-light-bg">
   <polymer-ui-toolbar>
     <polymer-ui-icon-button icon="back"></polymer-ui-icon-button>
-    <div flex></div>
+    <div flex=""></div>
     <polymer-ui-icon-button id="search" icon="search"></polymer-ui-icon-button>
     <polymer-ui-icon-button icon="dots"></polymer-ui-icon-button>
   </polymer-ui-toolbar>
@@ -27,12 +25,7 @@
     <polymer-ui-menu-item icon="up">Updates</polymer-ui-menu-item>
     <polymer-ui-menu-item icon="tag">Promos</polymer-ui-menu-item>
   </polymer-ui-dropup>
-  <script>
-    document.addEventListener('polymer-ready', function() {
-      document.querySelector('#search').addEventListener('tap', function() {
-        document.querySelector('#dropup').toggle();
-      });
-    });
-  </script>
-</body>
-</html>
+  <script src="demo.html.0.js"></script>
+
+
+</body></html>

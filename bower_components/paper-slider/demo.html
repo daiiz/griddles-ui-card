@@ -1,6 +1,4 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <title>paper-slider</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -12,7 +10,7 @@
   <link rel="import" href="paper-slider.html">
   <link rel="import" href="../font-roboto/roboto.html">
   
-  <style shim-shadowdom>
+  <style shim-shadowdom="">
   
     body {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
@@ -59,7 +57,7 @@
   </style>
   
 </head>
-<body unresolved>
+<body unresolved="">
 
   <section class="yellow-slider">
   
@@ -84,25 +82,25 @@
   
   <section>
   
-    <div center horizontal layout>
+    <div center="" horizontal="" layout="">
       <div>R</div>
-      <paper-slider value="23" max="255" editable></paper-slider>
+      <paper-slider value="23" max="255" editable=""></paper-slider>
     </div>
     
     <br>
     <br>
     
-    <div center horizontal layout>
+    <div center="" horizontal="" layout="">
       <div>G</div>
-      <paper-slider value="183" max="255" editable></paper-slider>
+      <paper-slider value="183" max="255" editable=""></paper-slider>
     </div>
     
     <br>
     <br>
     
-    <div center horizontal layout>
+    <div center="" horizontal="" layout="">
       <div>B</div>
-      <paper-slider value="211" max="255" editable></paper-slider>
+      <paper-slider value="211" max="255" editable=""></paper-slider>
     </div>
     
   </section>
@@ -113,7 +111,7 @@
   
     <div>Brightness</div>
     <br>
-    <paper-slider pin value="50"></paper-slider>
+    <paper-slider pin="" value="50"></paper-slider>
   
   </section>
   
@@ -125,18 +123,12 @@
       <span>Ratings</span><span id="ratingsLabel"></span>
     </div>
     <br>
-    <paper-slider id="ratings" pin snaps max="10" step="1" value="5"></paper-slider>
+    <paper-slider id="ratings" pin="" snaps="" max="10" step="1" value="5"></paper-slider>
   
   </section>
   
-  <script>
+  <script src="demo.html.0.js"></script>
   
-    var ratings = document.querySelector('#ratings');
-    ratings.addEventListener('change', function() {
-      document.querySelector('#ratingsLabel').textContent = ratings.value;
-    });
-  
-  </script>
-  
-</body>
-</html>
+
+
+</body></html>

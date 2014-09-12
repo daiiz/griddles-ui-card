@@ -1,12 +1,8 @@
-
-<!doctype html>
-<!--
+<!DOCTYPE html><!--
 Copyright 2013 The Polymer Authors. All rights reserved.
 Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
--->
-<html>
-  <head>
+--><html><head>
     <title>polymer-ui-nav-arrow</title>
     <script src="../platform/platform.js"></script>
     <link rel="import" href="polymer-ui-nav-arrow.html">
@@ -38,7 +34,7 @@ license that can be found in the LICENSE file.
       }
     </style>
   </head>
-  <body class="polymer-ui-body-text" unresolved>
+  <body class="polymer-ui-body-text" unresolved="">
     <div class="container">
       <polymer-selector>
         <div>Item 1</div>
@@ -50,15 +46,7 @@ license that can be found in the LICENSE file.
       <polymer-ui-nav-arrow></polymer-ui-nav-arrow>
     </div>
     
-    <script>
-      document.addEventListener('polymer-ready', function() {
-        var selector = document.querySelector('polymer-selector');
-        selector.addEventListener('polymer-select', function(e) {
-          if (e.detail.isSelected) {
-            document.querySelector('polymer-ui-nav-arrow').target = e.detail.item;
-          }
-        });
-      })
-    </script>
-  </body>
-</html>
+    <script src="demo.html.0.js"></script>
+  
+
+</body></html>

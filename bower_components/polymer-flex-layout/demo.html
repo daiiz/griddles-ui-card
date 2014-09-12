@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <title>polymer-flex-layout</title>
   <script src="../platform/platform.js"></script>
   <link rel="import" href="polymer-flex-layout.html">
@@ -15,7 +13,7 @@
     }
   </style>
 </head>
-<body unresolved>
+<body unresolved="">
   <polymer-element name="flex-css">
     <template>
       <link rel="stylesheet" href="polymer-flex-layout.css">
@@ -26,15 +24,15 @@
           border: 2px solid #ccc;
         }
       </style>
-      <div class="flexbox" flex>
+      <div class="flexbox" flex="">
         <div>Hi I'm some content</div>
-        <div class="flexbox column" flex>
+        <div class="flexbox column" flex="">
           <div class="flexbox align-center">
             <h3>Title</h3>
             <button>hello</button>
           </div>
-          <div class="flexbox" flex>
-            <div flex>Main content</div>
+          <div class="flexbox" flex="">
+            <div flex="">Main content</div>
             <div>Sidebar content</div>
           </div>
           <div>Some more stuffs...</div>
@@ -45,16 +43,10 @@
         <div>A last bit, like a panel</div>
       </div>
     </template>
-    <script>
-      Polymer('flex-css', {
-        ready: function() {
-          this.classList.add('flexbox');
-        }
-      });
-    </script>
+    <script src="demo.html.0.js"></script>
   </polymer-element>
 
-  <polymer-element name="flex-container" noscript extends="polymer-flex-panel">
+  <polymer-element name="flex-container" noscript="" extends="polymer-flex-panel">
     <template>
       <style>
         div, polymer-flex-panel {
@@ -64,13 +56,13 @@
         }
       </style>
       <div>Hi I'm some content</div>
-      <polymer-flex-panel vertical flex>
+      <polymer-flex-panel vertical="" flex="">
         <polymer-flex-panel align="center">
           <h3>Title</h3>
           <button>hello</button>
         </polymer-flex-panel>
-        <polymer-flex-panel flex>
-          <div flex>Main content</div>
+        <polymer-flex-panel flex="">
+          <div flex="">Main content</div>
           <div>Sidebar content</div>
         </polymer-flex-panel>
         <div>Some more stuffs...</div>
@@ -82,7 +74,7 @@
     </template>
   </polymer-element>
   
-  <polymer-element name="flex-nonvisual" noscript>
+  <polymer-element name="flex-nonvisual" noscript="">
     <template>
       <style>
         div {
@@ -92,19 +84,19 @@
         }
       </style>
       <polymer-flex-layout></polymer-flex-layout>
-      <div flex>
+      <div flex="">
         <polymer-flex-layout></polymer-flex-layout>
         <div>Hi I'm some content</div>
-        <div flex>
-          <polymer-flex-layout vertical></polymer-flex-layout>
+        <div flex="">
+          <polymer-flex-layout vertical=""></polymer-flex-layout>
           <div>
             <polymer-flex-layout align="center"></polymer-flex-layout>
             <h3>Title</h3>
             <button>hello</button>
           </div>
-          <div flex>
+          <div flex="">
             <polymer-flex-layout></polymer-flex-layout>
-            <div flex>Main content</div>
+            <div flex="">Main content</div>
             <div>Sidebar content</div>
           </div>
           <div>Some more stuffs...</div>
@@ -126,5 +118,6 @@
   <br>
   <h3>polymer-flex-layout element</h3>
   <flex-nonvisual></flex-nonvisual>
-</body>
-</html>
+
+
+</body></html>
