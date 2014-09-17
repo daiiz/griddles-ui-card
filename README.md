@@ -55,7 +55,7 @@ function griddlesAppCardClicked(card) {
       + `streamMarginRight`: Specify the margin in right of streams as a number, in pixels. 
       + `streamPaddingTop`: Specify the margin in the top of the card of the uppermost, in pixels.
       + `numberReadAtOnce`: Specify the number of cards which will be loaded at one time.
-      + `displayFromTopLeftToBottomRight`: This number is used to adjust the speed of the animation when displaying the card. A value `1` as a reference. This number is smaller, the animation speed will be faster. 
+      + `displayFromTopLeftToBottomRight`: This number is used to adjust the speed of the animation when displaying the card. A value `1` is interpreted as a reference. This number is smaller, the animation speed will be faster. 
 
 #### cards
    + object
