@@ -4,6 +4,7 @@ var TAGMANAGE = "タグを管理";
 var griddles_apis = {};
 var yummy2 = {};
 
+
 function creatingKeyList(data, id) {
   document.getElementById(id).innerHTML = '<paper-item label="すべてのごちそう" class="menu_item" id="btn_all_gochiso" data-label="ごちそう"></paper-item>';
   var tags = [];
