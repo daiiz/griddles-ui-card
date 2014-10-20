@@ -12,7 +12,6 @@ var defaults= {
     'insert_type': 'append', // または'prepend'
     'border_radius': 2,
     'dataset': {'name': 'bar'},
-    // NEW!
     'paperColor': '#ffffff'
 };
 

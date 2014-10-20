@@ -10,9 +10,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
       width: 615,
       height: 690,
       type: 'shell',
-      //id: '__',
       singleton: false
    },function(appWindow) {
-      //appWindow.resizeTo(400, 250)
    });
 });
