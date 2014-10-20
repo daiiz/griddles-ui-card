@@ -1,9 +1,20 @@
 <!--
 Copyright (c) 2014 daiz. All rights reserved.
 This code may only be used under the BSD style.
---><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
-
-</head><body><polymer-element name="griddles-ui-card" attributes="query cards wrappedBy layout">
+-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+  <link rel="import" href="../griddle-card/griddle-card.html">
+</head>
+<body>
+<polymer-element name="griddles-ui-card"
+                 attributes="query cards wrappedBy layout
+                             cardWidth cardMarginBottom streamMarginLeft streamMarginRight streamPaddingTop numberReadAtOnce displayFromTopLeftToBottomRight">
 <template>
    <link rel="stylesheet" type="text/css" href="griddlesMD/md.griddles.css">
    <!--content-->

@@ -1,17 +1,17 @@
 {
-  "name": "Yummy",
+  "name": "Yummy - beta",
   "description": "Yummy - Demo for <griddles-ui-card>",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "app": {
     "background": {
       "scripts": ["background.js"]
     }
   },
-  "icons": { 
-    "48":  "griddles-ui-card/yummy/yummy_0e.png", 
-    "16":  "griddles-ui-card/yummy/yummy_0e.png", 
-    "128": "griddles-ui-card/yummy/yummy_0e.png" 
+  "icons": {
+    "48":  "griddles-ui-card/yummy/yummy_0e.png",
+    "16":  "griddles-ui-card/yummy/yummy_0e.png",
+    "128": "griddles-ui-card/yummy/yummy_0e.png"
   },
   "permissions": ["storage", "unlimitedStorage", "<all_urls>"]
 }

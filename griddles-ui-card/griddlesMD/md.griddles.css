@@ -2,8 +2,7 @@
 
 #gadget-griddles {
   -webkit-box-sizing: border-box;
-  width: 99%; 
-  background-color: #e5e5e5;
+  width: 99%;
   padding-top: 0px!important;
   -webkit-box-sizing: border-box;
 }
@@ -29,15 +28,15 @@ html {
 }
 
 .body {
-  background-color: #e5e5e5!important;
+  /* background-color: #e5e5e5!important; */
 }
 
 #gadget-griddles {
-  background-color: #e5e5e5;
+  /* background-color: #e5e5e5; */
 }
 
 .card-reserve {
-	//background-color: #e5e5e5;/*#beef00*/
+	/* background-color: #e5e5e5; */
 }
 
 .card {

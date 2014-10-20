@@ -362,7 +362,7 @@
             json_reserve.C = CardData[times].className;
         }
         json_reserve.H = CardData[times].height;
-        //json_reserve.T = "";//Loading..."; 
+        //json_reserve.T = "";//Loading...";
         var html = home.make(template_reserve, json_reserve);
         //console.log("<%d> " + html, times);
         html = $(html);
@@ -381,7 +381,7 @@
         if (int_z_depth >= 6) {
             int_z_depth = 6;
         }
-        /* 
+        /*
          * CSS style data for shadows:
          *
          * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
@@ -421,7 +421,7 @@
         // var shadow_bottom = '<div class="shadow-bottom"></div>';
         // var shadow_top = '<div class="shadow-top"></div>';
         var shadow = home.get_sahdow_code(CardData[times].shadow_depth);
-        var template_card = '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px; border-radius: {R}px;" data-clickable="card">{T}</div>';
+        var template_card = '<div id="card_{I}" class="card-non-visible card {C}" style="height: {H}px; width: {W}px; border-radius: {R}px; background-color: {P}" data-clickable="card">{T}</div>';
         var contents = CardData[times].contents; // chrome appsでの外部画像の場合の処理は別途用意
         var radius = 0;
         if (CardData[times].border_radius != undefined) {
@@ -433,7 +433,9 @@
             "C": CardData[times].className,
             "W": user_settings.card_width,
             "R": radius,
-            "T": shadow + contents
+            "T": shadow + contents,
+            // NEW
+            "P": CardData[times].paperColor
         };
         var html = home.make(template_card, json_card);
         clog(html);
@@ -624,7 +626,7 @@
     function set_scroll_event() {
             var scroll_wrappers = ["document", "core_scroll_header_panel"];
             var scroll_wrapper = "user_div_element";
-            /* g_wrapperは、以下のどれか１つ または id が与えられる。 
+            /* g_wrapperは、以下のどれか１つ または id が与えられる。
              * "document", "core-scroll-header-panel"
              */
             var g_wrapper = document.querySelector("griddles-ui-card").wrappedBy;
@@ -732,14 +734,43 @@
         queryChanged: function(attr, oldValue, newValue) {
             console.info("[Polymer::queryChanged] " + this.query);
             home.griddlesNode = this.$;
-            user_settings.card_width = this.layout.cardWidth;
-            user_settings.margin_left = this.layout.streamMarginLeft;
-            user_settings.margin_right = this.layout.streamMarginRight;
-            user_settings.margin_bottom = this.layout.cardMarginBottom;
-            user_settings.padding_top_of_stream = this.layout.streamPaddingTop;
-            user_settings.one_time_loading_card_number = this.layout.numberReadAtOnce;
-            user_settings.displayFromTopLeftToBottomRight = this.layout.displayFromTopLeftToBottomRight;
-            var cards = (this.cards)[this.query];
+            var gc = this; // this.layout
+
+            if(gc.cardWidth != undefined) {
+                user_settings.card_width = +gc.cardWidth;
+            }
+            if(gc.streamMarginLeft != undefined) {
+                user_settings.margin_left = +gc.streamMarginLeft;
+            }
+            if(gc.streamMarginRight != undefined) {
+                user_settings.margin_right = +gc.streamMarginRight;
+            }
+            if(gc.cardMarginBottom != undefined) {
+                user_settings.margin_bottom = +gc.cardMarginBottom;
+            }
+            if(gc.streamPaddingTop != undefined) {
+                user_settings.padding_top_of_stream = +gc.streamPaddingTop;
+            }
+            if(gc.numberReadAtOnce != undefined) {
+                user_settings.one_time_loading_card_number = +gc.numberReadAtOnce;
+            }
+            if(gc.displayFromTopLeftToBottomRight != undefined) {
+                user_settings.displayFromTopLeftToBottomRight = +gc.displayFromTopLeftToBottomRight;
+            }
+
+            //var cards = (this.cards)[this.query];
+            var cards;
+            if(document.querySelector('griddle-card') != null) {
+               cards = document.querySelector('griddle-card').getList;
+            }else {
+               cards = [];
+            }
+            this.cards[this.query] = cards;
+
+            if(document.querySelector('griddle-card') != null) {
+                console.log("cleared: %d", document.querySelector('griddle-card').clearList);
+            }
+            this.innerHTML = '';
             if (cards != undefined) {
                 var isRunning = home.new_session(cards, true);
             } else {
@@ -781,15 +812,15 @@
             return this.$["gadget-griddles"].getElementsByClassName("stream").length;
         },
         /*wrapper: "stage",*/
-        layout: {
-            cardWidth: 200,
-            cardMarginBottom: 16,
-            streamMarginLeft: 8,
-            streamMarginRight: 8,
-            streamPaddingTop: 10,
-            numberReadAtOnce: 20,
-            displayFromTopLeftToBottomRight: 0.5
-        },
+        //layout: {
+        cardWidth: 400,
+        cardMarginBottom: 16,
+        streamMarginLeft: 8,
+        streamMarginRight: 8,
+        streamPaddingTop: 10,
+        numberReadAtOnce: 20,
+        displayFromTopLeftToBottomRight: 0.5,
+        //},
         query: "",
         cards: {
             sample: [{

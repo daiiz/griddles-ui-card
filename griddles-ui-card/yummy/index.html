@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../../bower_components/platform/platform.js"></script>
   <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
- 
+
   <!-- For griddles -->
   <link rel="import" href="../griddles-ui-card.html">
 
@@ -43,7 +43,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- For App -->
   <script src="lib/appStorage_v0.0.1.js"></script>
   <script src="samples.js"></script>
-  
+
   <style shim-shadowdom="">
 
     html, body {
@@ -64,23 +64,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       bottom: 0;
       left: 0;
     }
-    
+
     /* background for toolbar when it is at its full size */
     core-scroll-header-panel::shadow #headerBg {
       background-image: url("src/1frgq.jpg");
     }
-    
+
     /* background for toolbar when it is condensed */
     core-scroll-header-panel::shadow #condensedHeaderBg {
       background-color: #312319;/*#f4b400;*/
     }
-    
+
     core-toolbar {
       color: #f1f1f1;
       fill: #f1f1f1;
       background-color: transparent;
     }
-    
+
     core-scroll-header-panel::shadow #mainContainer {
       overflow-y: scroll!important;
     }
@@ -90,7 +90,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       transform-origin: 0;
       font-size: 40px;
     }
-    
+
     .content {
       padding: 10px 30px;
     }
@@ -149,14 +149,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-item label="登録したデータを削除" class="menu_item" id="btn_remove"></paper-item>
       </paper-menu-button>
       <div class="bottom indent title">Yummy</div>
-      
+
     </core-toolbar>
 
     <div class="content">
        <griddles-ui-card wrappedby="core-scroll-header-panel"></griddles-ui-card>
     </div>
   </core-scroll-header-panel>
-  
+
   <script src="index.html.0.js"></script>
 
 <paper-dialog heading="データをインポート" transition="paper-dialog-transition-center" id="dialog_import">
