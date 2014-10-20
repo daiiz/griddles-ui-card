@@ -1,4 +1,7 @@
-// background.js
+//
+// background.js for chrome apps
+//
+
 chrome.app.runtime.onLaunched.addListener(function() {
    // griddles-ui-card/yummy/index.html
    // griddles-ui-card/demos/demo_document.html
