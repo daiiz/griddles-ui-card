@@ -14,7 +14,7 @@ document.getElementById("btn1").addEventListener("click", function() {
   var card;
   for(var i = 0; i < 100; i++) {
      if(i % 5 == 0) {
-       card = "<griddle-card type='photo'><content>foo.png</content></griddle-card>";
+       card = "<griddle-card borderRadius="+counter+" type='photo'><content>foo.png</content></griddle-card>";
      }else {
        card = "<griddle-card borderRadius="+counter+" height='random'><content>plus"+counter+"</content></griddle-card>";
      }

@@ -242,7 +242,8 @@
     }
     home.photo_transaction = function(web_url, card_data, times) {
         var user_screen = AppData.int_user_screen;
-        var template_img = '<img src="{U}" style="width:100%; height:100%">';
+        var template_img = '<img src="{U}" style="width:100%; height:100%; border-radius: {R}px">';
+        //console.log(CardData[times].border_radius);
         var canvas = home.griddlesNode["canvas-griddles"];
         var photo = new Image();
         photo.onload = function() {
@@ -259,7 +260,7 @@
             canvas.style.width = home.int_to_px(w);
             canvas.style.height = home.int_to_px(h);
             canvas.src = web_url;
-            CardData[times].contents = home.make(template_img, {"U": web_url});
+            CardData[times].contents = home.make(template_img, {"U": web_url, "R": CardData[times].border_radius});
             CardData[times].src = web_url;
             CardData[times].height = h;
             CardData[times].design_configured = true;
@@ -268,7 +269,7 @@
         photo.onerror = function(e) {
             web_url = "#";
             var h = 0;
-            CardData[times].contents = home.make(template_img, {"U": web_url});
+            CardData[times].contents = home.make(template_img, {"U": web_url, "R": CardData[times].border_radius});
             CardData[times].src = web_url;
             CardData[times].height = h;
             CardData[times].design_configured = true;
