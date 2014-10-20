@@ -68,7 +68,7 @@ Polymer("griddle-card", {
       if(new_card.griddles_type == 'photo_grid') {
         new_card.height = defaults.height;
       }else {
-        new_card.height = Math.floor(Math.random()*200) + 50;
+        new_card.height = false;//Math.floor(Math.random()*200) + 50;
       }
     }else {
       if(this.height == 'random') {
