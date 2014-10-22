@@ -6,7 +6,7 @@ function griddlesAppInit(api) {
 }
 
 function griddlesAppCardClicked(card) {
-  console.log(card);
+  console.dirxml(card);
 }
 
 // for demo:

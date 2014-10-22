@@ -11,7 +11,7 @@ var defaults= {
     'stream_index': false,
     'insert_type': 'append', // または'prepend'
     'border_radius': 2,
-    'dataset': {'name': 'bar'},
+    'data': {'name': 'bar'},
     'paperColor': '#ffffff'
 };
 
@@ -99,10 +99,23 @@ Polymer("griddle-card", {
     }
 
     // dataset
-    if(this.dataset == undefined) {
-      new_card.dataset = defaults.dataset;
+    if(this.data == undefined) {
+      new_card.data = defaults.data;
     }else {
-      new_card.dataset = this.dataset;
+      var data = this.data;
+      if(data.search(/,/gi) != -1) {
+        var data = data.split(",");
+      }else {
+        var data = [data];
+      }
+      var json = {};
+      for(var i = 0; i < data.length; i++) {
+        var prop = data[i].split(":")[0];
+        var val  = data[i].split(':')[1];
+            json[prop] = val;
+      }
+
+      new_card.data = json;//JSON.parse(this.data);
     }
 
 

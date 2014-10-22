@@ -734,7 +734,7 @@
                                   'streamIndex="{X}" '+
                                   'insert="{I}" ' +
                                   'borderRadius="{R}" ' +
-                                  'dataset={D} ' +
+                                  'data="{D}" ' +
                                   'paperColor="{P}" ' +
                                   '>' +
                              '<content>{C}</content>' +
@@ -848,7 +848,7 @@
                 "height": false,
                 "stream_index": false,
                 "insert_type": "append",
-                "dataset": {}
+                "data": {}
             }]
         },
         get apis() {
