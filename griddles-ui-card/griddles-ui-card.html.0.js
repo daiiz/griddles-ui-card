@@ -243,7 +243,6 @@
     home.photo_transaction = function(web_url, card_data, times) {
         var user_screen = AppData.int_user_screen;
         var template_img = '<img src="{U}" style="width:100%; height:100%; border-radius: {R}px">';
-        //console.log(CardData[times].border_radius);
         var canvas = home.griddlesNode["canvas-griddles"];
         var photo = new Image();
         photo.onload = function() {
