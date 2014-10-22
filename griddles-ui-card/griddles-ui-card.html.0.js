@@ -713,15 +713,32 @@
          */
     var griddles = griddles || {};
     griddles.apis = {
+        // bind
         bind: function(template, json) {
             return griddles.make(template, json);
         },
+        // make
         make: function(template, json) {
             return griddles.make(template, json);
         },
         cac: function(card_json) {
             return griddles.card_auto_complete(card_json);
-        }
+        },
+        make2: function() {
+          // あとで実装
+        },
+        griddleCardTemplate: '<griddle-card ' +
+                                  'type="{T}" ' +
+                                  'shadowDepth="{S}" ' +
+                                  'height="{H}" ' +
+                                  'streamIndex="{X}" '+
+                                  'insert="{I}" ' +
+                                  'borderRadius="{R}" ' +
+                                  'dataset={D} ' +
+                                  'paperColor="{P}" ' +
+                                  '>' +
+                             '<content>{C}</content>' +
+                             '</griddle-card>'
     };
     /*
      * Polymer code:
@@ -795,9 +812,8 @@
         },
         ready: function() {
             home.griddlesNode = this.$;
-            console.log(document.querySelector("griddles-ui-card").apis);
             if (window.griddlesAppInit != undefined) {
-                griddlesAppInit();
+                griddlesAppInit(home.apis);
             } else {
                 console.info("The function `griddlesAppInit` is undefined.");
             }

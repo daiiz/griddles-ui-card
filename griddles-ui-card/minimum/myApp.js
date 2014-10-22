@@ -1,6 +1,8 @@
+// minimum/myApp.js
 // griddles-ui-card requires:
 
-function griddlesAppInit() {
+function griddlesAppInit(api) {
+  console.log(api);
 }
 
 function griddlesAppCardClicked(card) {
