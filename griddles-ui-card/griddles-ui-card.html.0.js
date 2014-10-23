@@ -724,21 +724,54 @@
         cac: function(card_json) {
             return griddles.card_auto_complete(card_json);
         },
-        make2: function() {
-          // あとで実装
+        replaceAttrName: function(a) {
+          var attr =  '';
+          switch(a) {
+            case 'T': attr = 'type'; break;
+            case 'S': attr = 'shadowDepth'; break;
+            case 'H': attr = 'height'; break;
+            case 'X': attr = 'streamIndex'; break;
+            case 'I': attr = 'insert'; break;
+            case 'R': attr = 'borderRadius'; break;
+            case 'D': attr = 'data'; break;
+            case 'P': attr = 'paperColor'; break;
+            case 'C': attr = 'content'; break;
+            default:  attr = 'unknown'; break;
+          }
+          return attr;
         },
-        griddleCardTemplate: '<griddle-card ' +
-                                  'type="{T}" ' +
-                                  'shadowDepth="{S}" ' +
-                                  'height="{H}" ' +
-                                  'streamIndex="{X}" '+
-                                  'insert="{I}" ' +
-                                  'borderRadius="{R}" ' +
-                                  'data="{D}" ' +
-                                  'paperColor="{P}" ' +
-                                  '>' +
-                             '<content>{C}</content>' +
-                             '</griddle-card>'
+        makeCard: function(tag, attr, value) {
+          // 文字列操作で何とかする必要がある
+          // createElementを使ってしまうと直ちにPolymerのreadが呼ばれてしまう
+          // コメントを置換する方法を用いている
+          if(tag === "" || tag === null || tag === undefined) {
+            tag = "<griddle-card /* GRIDDLECARDATTRS */><!-- GRIDDLECARDCONTENT --></griddle-card>";
+          }
+          var pa = "/* GRIDDLECARDATTRS */";
+          var pc = "<!-- GRIDDLECARDCONTENT -->"
+          var pcs = "<!-- GRIDDLECARDCONTENT_START -->";
+          var pce = "<!-- GRIDDLECARDCONTENT_END -->";
+
+          // attr=value に置換される
+          var place_attrs = new RegExp(/\/\* GRIDDLECARDATTRS \*\//gi);
+          var place_content = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT \-\-\>/gi);
+          // <!-- に置換される
+          var place_content_start = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT\_START \-\-\>/gi);
+          // --> に置換 される
+          var place_content_end = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT\_END \-\-\>/gi);
+
+          attr = this.replaceAttrName(attr);
+          if(attr != 'content') {
+            var rep_keyvalue = pa + " " + attr + "=" + value + " ";
+            tag = tag.replace(place_attrs, rep_keyvalue);
+          }else if(attr == 'content') {
+            var rep_content = pcs + "<content>" + value + "</content>" + pce + pc;
+            tag = tag.replace(place_content_start, "<!-- ");
+            tag = tag.replace(place_content_end, " --> ");
+            tag = tag.replace(place_content, rep_content);
+          }
+          return tag;
+        }
     };
     /*
      * Polymer code:
