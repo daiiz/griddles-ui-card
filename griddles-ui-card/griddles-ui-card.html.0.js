@@ -742,7 +742,7 @@
         },
         makeCard: function(tag, attr, value) {
           // 文字列操作で何とかする必要がある
-          // createElementを使ってしまうと直ちにPolymerのreadが呼ばれてしまう
+          // createElementを使うと直ちにPolymerのreadyが呼ばれてしまう
           // コメントを置換する方法を用いている
           if(tag === "" || tag === null || tag === undefined) {
             tag = "<griddle-card /* GRIDDLECARDATTRS */><!-- GRIDDLECARDCONTENT --></griddle-card>";
