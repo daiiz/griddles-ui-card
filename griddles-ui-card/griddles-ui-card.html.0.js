@@ -742,7 +742,7 @@
         },
         makeCard: function(tag, attr, value) {
           // 文字列操作で何とかする必要がある
-          // createElementを使うと直ちにPolymerのreadyが呼ばれてしまう
+          // createElementを使ってしまうと直ちにPolymerのreadが呼ばれてしまう
           // コメントを置換する方法を用いている
           if(tag === "" || tag === null || tag === undefined) {
             tag = "<griddle-card /* GRIDDLECARDATTRS */><!-- GRIDDLECARDCONTENT --></griddle-card>";
@@ -754,11 +754,11 @@
 
           // attr=value に置換される
           var place_attrs = new RegExp(/\/\* GRIDDLECARDATTRS \*\//gi);
-          var place_content = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT \-\-\>/gi);
+          var place_content = new RegExp(/<!-- GRIDDLECARDCONTENT -->/gi);
           // <!-- に置換される
-          var place_content_start = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT\_START \-\-\>/gi);
+          var place_content_start = new RegExp(/<!-- GRIDDLECARDCONTENT\_START -->/gi);
           // --> に置換 される
-          var place_content_end = new RegExp(/\<\!\-\- GRIDDLECARDCONTENT\_END \-\-\>/gi);
+          var place_content_end = new RegExp(/<!-- GRIDDLECARDCONTENT\_END -->/gi);
 
           attr = this.replaceAttrName(attr);
           if(attr != 'content') {
