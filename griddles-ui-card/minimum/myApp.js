@@ -33,17 +33,22 @@ document.getElementById("btn1").addEventListener("click", function() {
       card = api.makeCard(card, 'C', "foo.png");
       card = api.makeCard(card, 'D', "blogURL:me.blog.com");
   $("griddles-ui-card").append(card);
-  /* */
+
 
   for(var i = 0; i < 100; i++) {
      if(i % 5 == 0) {
-       card = "<griddle-card borderRadius="+counter+" type='photo'><content>foo.png</content></griddle-card>";
+       card = api.makeCard(null, "R", counter);
+       card = api.makeCard(card, "C", "foo.png");
+       card = api.makeCard(card, "T", "photo");
      }else {
-       card = "<griddle-card borderRadius="+counter+" height='random'><content>plus"+counter+"</content></griddle-card>";
+       card = api.makeCard(null, "R", counter);
+       card = api.makeCard(card, "C", "plus"+counter);
+       card = api.makeCard(card, "H", "random");
      }
      counter++;
      $("griddles-ui-card").append(card);
   }
   document.querySelector("griddles-ui-card").query = 'test_query_' + counter;
+  /* */
 
 }, false);
