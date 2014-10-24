@@ -30,7 +30,7 @@ document.getElementById("btn1").addEventListener("click", function() {
       card = api.makeCard(card, 'R', 20);
       card = api.makeCard(card, 'S', 3);
       card = api.makeCard(card, 'C', "foo.png");
-      card = api.makeCard(card, 'D', "blogURL:me.blog.com")
+      card = api.makeCard(card, 'D', "blogURL:me.blog.com");
   $("griddles-ui-card").append(card);
 
 
