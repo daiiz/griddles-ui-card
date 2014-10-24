@@ -15,7 +15,6 @@ document.getElementById("btn1").addEventListener("click", function() {
 
   var card;
 
-  /* debug for makeCard */
   // text type
   var api = document.querySelector("griddles-ui-card").apis;
       card = api.makeCard(null, 'C', "<div>daiki</div>");
@@ -31,7 +30,7 @@ document.getElementById("btn1").addEventListener("click", function() {
       card = api.makeCard(card, 'R', 20);
       card = api.makeCard(card, 'S', 3);
       card = api.makeCard(card, 'C', "foo.png");
-      card = api.makeCard(card, 'D', "blogURL:me.blog.com");
+      card = api.makeCard(card, 'D', "blogURL:me.blog.com")
   $("griddles-ui-card").append(card);
 
 
@@ -49,6 +48,5 @@ document.getElementById("btn1").addEventListener("click", function() {
      $("griddles-ui-card").append(card);
   }
   document.querySelector("griddles-ui-card").query = 'test_query_' + counter;
-  /* */
 
 }, false);
