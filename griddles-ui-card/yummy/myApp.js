@@ -162,10 +162,10 @@ function griddlesAppInit() {
   });
 }
 
+
 /*　
  * Event Listener
  */
-
 document.getElementById("btn_import").addEventListener("click", function() {
    toggleDialog('dialog_import');
 }, false);
@@ -175,24 +175,23 @@ document.getElementById("btn_remove").addEventListener("click", function() {
 }, false);
 
 document.getElementById("btn_all_gochiso").addEventListener("click", function() {
-   //var isRunning = home.new_session(miils(), true);
-   //console.log(isRunning);
 }, false);
 
 document.getElementById("dialog_btn_import").addEventListener("click", function() {
    ImportingData();
 }, false);
-/*
-window.addEventListener("load", function() {
-   console.log(document.querySelector("griddles-ui-card").apis);
-}, false)
-*/
+
 window.addEventListener("click", function(e) {
    var id = e.target.id;
    var dataset = e.target.dataset;
    if(dataset.label != undefined && dataset.label != TAGMANAGE) {
-       var cards = document.querySelector("griddles-ui-card").cards;
-       yummy2.query = dataset.label;
-       miils();
+       //var cards = document.querySelector("griddles-ui-card").cards;
+       var now = document.querySelector("griddles-ui-card").query;
+       if(now != dataset.label) {
+         yummy2.query = dataset.label;
+         miils();
+       }else {
+         console.log("同一のクエリ.");
+       }
    }
 },false);
