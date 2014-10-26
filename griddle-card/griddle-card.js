@@ -110,12 +110,14 @@ Polymer("griddle-card", {
       }
       var json = {};
       for(var i = 0; i < data.length; i++) {
-        var prop = data[i].split(":")[0];
-        var val  = data[i].split(':')[1];
-            json[prop] = val;
+        var dt = data[i].split(":");
+        var prop = dt[0];
+        var rg = new RegExp(prop + ':');
+        var val = data[i].replace(rg, '');
+        json[prop] = val;
       }
 
-      new_card.data = json;//JSON.parse(this.data);
+      new_card.data = json;
     }
 
 
@@ -126,9 +128,7 @@ Polymer("griddle-card", {
       new_card.paperColor = this.paperColor;
     }
 
-
     griddle_card_list.push(new_card);
-    // console.log("added: %s", content);
   },
 
   get getList() {
