@@ -77,7 +77,7 @@ function miils() {
        }
     }
     var headerBgURL = "";
-    if(query != MAINKEY && imageList.length > 0) {
+    if(imageList.length > 0) {
       var r = Math.floor(Math.random() * (imageList.length));
       headerBgURL = imageList[r];
     }else {
@@ -174,9 +174,6 @@ document.getElementById("btn_remove").addEventListener("click", function() {
    removingData();
 }, false);
 
-document.getElementById("btn_all_gochiso").addEventListener("click", function() {
-}, false);
-
 document.getElementById("dialog_btn_import").addEventListener("click", function() {
    ImportingData();
 }, false);
@@ -185,7 +182,6 @@ window.addEventListener("click", function(e) {
    var id = e.target.id;
    var dataset = e.target.dataset;
    if(dataset.label != undefined && dataset.label != TAGMANAGE) {
-       //var cards = document.querySelector("griddles-ui-card").cards;
        var now = document.querySelector("griddles-ui-card").query;
        if(now != dataset.label) {
          yummy2.query = dataset.label;
