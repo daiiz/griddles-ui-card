@@ -218,7 +218,6 @@
         } else {
             gadget_h = home.px_to_int(gadget_h);
         }
-        //console.log(times);
         if (min_stream_height < gadget_h && times < CardData.length) {
             console.log("> auto_abort");
             //doc.getElementsByTagName("html")[0].style.overflowY = "hidden";
@@ -227,7 +226,6 @@
             //doc.getElementsByTagName("html")[0].style.overflowY = "scroll";
             var min_stream_index = +((home.get_min_height_stream_id()).split("_")[1]);
             AppData.int_last_min_stream = AppData.int_offsetHeights[min_stream_index];
-            //$($("#stream_"+min_stream_index)[0]).append("<div class='title' style='color: #222; background: #fff; padding: 10px' id='more'><center>more</center></div>");
             AppData.auto_abort = false;
             if (AppData.bool_scroll_event_is_setted == false) {
                 AppData.bool_scroll_event_is_setted = true;
@@ -236,9 +234,7 @@
         }
     };
     home.event_render_run = function(times) {
-        //doc.getElementsByTagName("html")[0].style.overflowY = "hidden";
         AppData.render_status = ["run", times];
-        //console.log(AppData.render_status);
     }
     home.photo_transaction = function(web_url, card_data, times) {
         var user_screen = AppData.int_user_screen;
@@ -350,21 +346,17 @@
         };
         var target_stream_id = home.get_min_height_stream_id();
         var st_index = CardData[times].stream_index;
-        //console.log(st_index);
         if (st_index == undefined || st_index === false) {} else {
             if (st_index >= 0 && st_index < AppData.int_max_streams) {
                 target_stream_id = "#stream_" + st_index;
             }
         }
-        //console.log(target_stream_id);
         json_reserve.I = times;
         if (home.isNotEnpty(CardData[times].className) == true) {
             json_reserve.C = CardData[times].className;
         }
         json_reserve.H = CardData[times].height;
-        //json_reserve.T = "";//Loading...";
         var html = home.make(template_reserve, json_reserve);
-        //console.log("<%d> " + html, times);
         html = $(html);
         if (CardData[times].insert_type == PREPEND) {
             $(home.griddlesNode["gadget-griddles"].querySelector(target_stream_id)).prepend(html); /*^o^*/
@@ -434,7 +426,6 @@
             "W": user_settings.card_width,
             "R": radius,
             "T": shadow + contents,
-            // NEW
             "P": CardData[times].paperColor
         };
         var html = home.make(template_card, json_card);
@@ -469,12 +460,10 @@
                 }
                 times = times + 1;
                 AppData.int_card_times = times;
-                //clog(AppData.int_card_times);
                 home.configure_card_design(times);
             } else if (AppData.bool_abort_flag == true) {
                 home.ers_times = times;
                 home.event_render_stoped(times);
-                //window.setTimeout(home.delay_event_render_stoped, 100);
                 AppData.bool_abort_flag = false;
             }
         });
@@ -537,18 +526,14 @@
             AppData.int_user_screen = CHROME_APP;
         }
         // #gadget-griddles　の内容をリセットする
-        //home.griddlesNode["gadget-griddles"].innerHTML = ""; /* CH1 */
         home.griddlesNode["gadget-streams"].innerHTML = ""; /* CH1 */
         AppData.int_max_streams = int_max_stream;
         AppData.int_gadget_width = (Math.floor(int_usingW) % 2 == 0) ? (Math.floor(int_usingW)) : (Math.floor(int_usingW) + 0);
         home.griddlesNode["gadget-griddles"].style.width = home.int_to_px(AppData.int_gadget_width); /* CH1 */
-        //home.render_stream("#gadget-griddles");
         home.render_stream("gadget-streams");
     }
     home.continue = function() {
-        //if((AppData.int_card_times + 1) < CardData.length) {
         home.configure_card_design(AppData.int_card_times + 1);
-        //}
     }
     home.onclick = function(e) {}
     home.window_resized_timer = false;
@@ -556,20 +541,16 @@
             if (home.window_resized_timer !== false) {
                 clearTimeout(home.window_resized_timer);
             }
-            //home.window_resized_timer = setTimeout(function() {
             console.log('Resized?');
             var ww = document.body.clientWidth - AppData.int_scrollbar_width; //window.innerWidth;
             var prev_ww = AppData.int_last_window_width;
             if (ww != prev_ww) {
                 AppData.int_last_window_width = ww;
                 console.log("> Resized. Change 'ad-padding-left'");
-                //console.log(ww, document.body.clientWidth - AppData.int_scrollbar_width)
                 home.set_adjustment_paddingL(ww, false);
-                //home.init();
             }
-            //}, 200);
         }
-        /* Event Listeners */
+    /* Event Listeners */
     $(window).resize("resize", home.window_resized);
     (function() {
         var class_griddles = document.getElementsByClassName("home-griddles");
@@ -808,7 +789,6 @@
                 user_settings.displayFromTopLeftToBottomRight = +gc.displayFromTopLeftToBottomRight;
             }
 
-            //var cards = (this.cards)[this.query];
             var cards;
             if(document.querySelector('griddle-card') != null) {
                cards = document.querySelector('griddle-card').getList;
