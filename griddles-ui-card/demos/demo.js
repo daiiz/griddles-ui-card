@@ -18,6 +18,7 @@ function set_blankCard(n) {
         card = g.apis.makeCard(card, 'S', +(document.getElementById("shadow_depth").value));
         card = g.apis.makeCard(card, 'C', "<div>Hello, world!</div>");
         card = g.apis.makeCard(card, 'H', "random");
+        card = g.apis.makeCard(card, 'R', +(document.getElementById("border_radius").value));
     $("griddles-ui-card").append(card);
   }
 }
@@ -35,6 +36,7 @@ function set_photoCard(n) {
         card = g.apis.makeCard(card, 'S', +(document.getElementById("shadow_depth").value));
         card = g.apis.makeCard(card, 'C', src);
         card = g.apis.makeCard(card, 'H', false);
+        card = g.apis.makeCard(card, 'R', +(document.getElementById("border_radius").value));
     $("griddles-ui-card").append(card);
   }
 }
