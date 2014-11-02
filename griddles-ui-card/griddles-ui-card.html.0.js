@@ -178,7 +178,7 @@
         AppData.int_offsetHeights = [];
         AppData.int_render_card_times = 0;
         for (var j = 0; j < max; j++) {
-            AppData.int_offsetHeights[j] = home.griddlesNode["gadget-griddles"].querySelector("#stream_" + j).offsetHeight; //doc.getElementById("stream_" + j).offsetHeight;
+            AppData.int_offsetHeights[j] = home.griddlesNode["gadget-griddles"].querySelector("#stream_" + j).offsetHeight;
         }
         AppData.int_card_times = 0;
         home.configure_card_design(AppData.int_card_times);

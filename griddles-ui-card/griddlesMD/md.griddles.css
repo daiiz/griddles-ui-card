@@ -18,7 +18,7 @@ html {
 }
 
 .stream {
-	background-color: transparent;
+	/* background-color: transparent; */
 	float: left;
   padding-top: 10px;
 }
