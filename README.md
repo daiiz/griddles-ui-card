@@ -1,5 +1,9 @@
 griddles-ui-card
 ================
+```
+バージョン0.3.以降の開発リポジトリは https://github.com/griddles-ui-card に変更されました。
+```
+
 ## Summary
 This is a web component wrapper for [griddlesJS](https://github.com/daiz713/griddles) using Polymer. The griddles-ui-card component provides a simple card UI. You can dynamically set and change the contents in the &lt;griddles-ui-card&gt; element.
 ##### Example:
